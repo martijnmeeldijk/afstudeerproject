@@ -1,4 +1,4 @@
-# afstudeerproject
+# Afstudeerproject
 Dit is ons afstudeerproject:
 
 ### Documenten:
