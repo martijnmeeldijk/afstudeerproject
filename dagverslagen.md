@@ -6,13 +6,13 @@
 
 ### Maandag 8 februari
 
-<u>Voormiddag</u>: 
+**Voormiddag**: 
 
 tutorials gekeken over nvidia jetson
 
 
 
-<u>Middag</u>: 
+**Middag**: 
 
 gebeld met Geens en Swenny, wat duidelijkheid over het project
 
@@ -20,7 +20,7 @@ We moeten in afwachting van de camera's wat opzoekwerk doen en prutsen met de re
 
 
 
-<u>Namiddag</u>: 
+**Namiddag**: 
 
 (Martijn & Robbe) nginx config gemaakt
 
@@ -100,15 +100,15 @@ https://developer.nvidia.com/embedded/community/jetson-projects
 
 ### Dinsdag 9 februari
 
-<u>Ochtend</u>
+**Ochtend**
 
 Samen deels de Scope & Vision ingevuld (moet nog afgemaakt worden)
 
-<u>Middag</u>
+**Middag**
 
 Naar ucll gegaan om de bordjes en cameras te halen
 
-<u>Namiddag</u>
+**Namiddag**
 
 Extra research
 
