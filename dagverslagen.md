@@ -95,3 +95,42 @@ https://github.com/dusty-nv/jetson-inference
 https://github.com/neuralet/neuralet/tree/master/applications/smart-distancing
 
 https://developer.nvidia.com/embedded/community/jetson-projects
+
+
+
+### Dinsdag 9 februari
+
+<u>Ochtend</u>
+
+Samen deels de Scope & Vision ingevuld (moet nog afgemaakt worden)
+
+<u>Middag</u>
+
+Naar ucll gegaan om de bordjes en cameras te halen
+
+<u>Namiddag</u>
+
+Extra research
+
+Kennis gemaakt met het Xavier bordje
+
+Al wat software geïnstalleerd en geprobeerd tensoflow aan de praat te krijgen (nog niet gelukt, voor morgen)
+
+deze tutorial verder doen: https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html (stap 3)
+
+
+
+Bronnen:
+
+[Real time object detection](https://www.mygreatlearning.com/blog/object-detection-using-tensorflow/)
+
+[Covid Social distancing detector](https://github.com/basileroth75/covid-social-distancing-detection)
+
+https://towardsdatascience.com/analyse-a-soccer-game-using-tensorflow-object-detection-and-opencv-e321c230e8f2
+
+[NVidia Peoplenet](https://ngc.nvidia.com/catalog/models/nvidia:tlt_peoplenet)
+
+[Jupyterlab](https://jupyterlab.readthedocs.io/en/stable/) soort van ide/interface om te prutsen met python en data
+
+[Jetson AI courses](https://developer.nvidia.com/embedded/learn/jetson-ai-certification-programs)
+
