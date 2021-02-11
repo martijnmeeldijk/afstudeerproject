@@ -134,3 +134,47 @@ https://towardsdatascience.com/analyse-a-soccer-game-using-tensorflow-object-det
 
 [Jetson AI courses](https://developer.nvidia.com/embedded/learn/jetson-ai-certification-programs)
 
+
+
+### Woensdag 10 februari
+
+**Ochtend**
+
+Sdk manager proberen te flashen, duurde heel lang
+
+**Middag**
+
+Martijn en robbe naar campus om proxy op te stellen
+
+Tim & Louis geprutst aan jetson
+
+**Namiddag**
+
+Proxy opgesteld, bleek uiteindelijk niet nodig te zijn
+
+We hebben heel de dag geprutst om deepstream aan de praat te krijgen, wat dan ineens lukte op te laatste 15 minuten. Het zou leuk zijn moesten we tensorflow ook geinstalleerd krijgen
+
+
+
+### Donderdag 11 februari
+
+**Ochtend**
+
+camera getest, geheugen proberen verhogen
+
+meeting met geens, heeft ons tips gegeven
+
+**middag**
+
+besturingssysteem opnieuw geflasht met Nvidia jetpack in de hoop dat tensorflow zou werken
+
+**avond**
+
+Meeting met Strypsteen, wat meer duidelijkheid gekregen
+
+Nu proberen we tensorflow werkende te krijgen op jetson
+
+zeer vervelend, want er is geen deftige ondersteuning voor arm
+
+
+
