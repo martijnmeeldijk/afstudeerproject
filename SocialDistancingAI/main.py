@@ -9,7 +9,7 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
 mouse_pts = []
 
-
+# gets coordinates from the mouse and adds them to the `mouse_pts` list
 def get_mouse_points(event, x, y, flags, param):
     # Used to mark 4 points on the frame zero of the video that will be warped
     # Used to mark 2 points on the frame zero of the video that are 6 feet away
@@ -33,7 +33,7 @@ args = parser.parse_args()
 
 input_video = args.videopath
 
-# Define a DNN model
+# Define a DNN (deepl neural network) model
 DNN = model()
 # Get video handle
 cap = cv2.VideoCapture(input_video)
@@ -51,6 +51,7 @@ output_movie = cv2.VideoWriter("Pedestrian_detect.avi", fourcc, fps, (width, hei
 bird_movie = cv2.VideoWriter(
     "Pedestrian_bird.avi", fourcc, fps, (int(width * scale_w), int(height * scale_h))
 )
+
 # Initialize necessary variables
 frame_num = 0
 total_pedestrians_detected = 0
@@ -62,6 +63,7 @@ sh_index = 1
 sc_index = 1
 
 cv2.namedWindow("image")
+# makes it so that `get_mouse_points` is used to handle mouse events
 cv2.setMouseCallback("image", get_mouse_points)
 num_mouse_points = 0
 first_frame_display = True
@@ -79,9 +81,11 @@ while cap.isOpened():
     frame_w = frame.shape[1]
 
     if frame_num == 1:
+        text_prompt = ["Bottom left", "Bottom right", "Top right", "Top Left", "First point of social disctance", "Second point of social distance"]
         # Ask user to mark parallel points and two points 6 feet apart. Order bl, br, tr, tl, p1, p2
         while True:
             image = frame
+            cv2.putText(image, text_prompt[len(mouse_pts)], (10,500), cv2.FONT_HERSHEY_SIMPLEX, 1,(255,255,255),2)
             cv2.imshow("image", image)
             cv2.waitKey(1)
             if len(mouse_pts) == 7:
