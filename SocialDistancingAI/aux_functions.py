@@ -3,9 +3,13 @@ import numpy as np
 from scipy.spatial.distance import pdist, squareform
 
 
+#create the square between the 4 points/nodes on the image
 def plot_lines_between_nodes(warped_points, bird_image, d_thresh):
+    #create an array from the 4 points/nodes you added to the image
     p = np.array(warped_points)
+    #hard math to return a condensed distance matrix to use in squareform
     dist_condensed = pdist(p)
+    #Converts a vector-form distance vector to a square-form distance matrix.
     dist = squareform(dist_condensed)
 
     # Close enough: 10 feet mark
@@ -54,7 +58,7 @@ def plot_lines_between_nodes(warped_points, bird_image, d_thresh):
 
     return six_feet_violations, ten_feet_violations, total_pairs
 
-
+#convert the points you added to the the image to a bird eye view box
 def plot_points_on_bird_eye_view(frame, pedestrian_boxes, M, scale_w, scale_h):
     frame_h = frame.shape[0]
     frame_w = frame.shape[1]
@@ -93,7 +97,7 @@ def plot_points_on_bird_eye_view(frame, pedestrian_boxes, M, scale_w, scale_h):
 
     return warped_pts, bird_image
 
-
+#Try to deduce the camera perspective based of the image height, width and the 6points (4 for the square, 2 for the 1.5m)
 def get_camera_perspective(img, src_points):
     IMAGE_H = img.shape[0]
     IMAGE_W = img.shape[1]
@@ -105,7 +109,7 @@ def get_camera_perspective(img, src_points):
 
     return M, M_inv
 
-
+#Writes some information in the corners of the screen
 def put_text(frame, text, text_offset_y=25):
     font_scale = 0.8
     font = cv2.FONT_HERSHEY_SIMPLEX
@@ -135,14 +139,14 @@ def put_text(frame, text, text_offset_y=25):
 
     return frame, 2 * text_height + text_offset_y
 
-
+#Calculates if there is a big difference between the amount of people right now and in not corona times
 def calculate_stay_at_home_index(total_pedestrians_detected, frame_num, fps):
     normally_people = 10
     pedestrian_per_sec = np.round(total_pedestrians_detected / frame_num, 1)
     sh_index = 1 - pedestrian_per_sec / normally_people
     return pedestrian_per_sec, sh_index
 
-
+#Creates the bounding boxes on the people recognised in the image/video
 def plot_pedestrian_boxes_on_image(frame, pedestrian_boxes):
     frame_h = frame.shape[0]
     frame_w = frame.shape[1]
