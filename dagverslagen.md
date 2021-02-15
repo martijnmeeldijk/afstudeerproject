@@ -176,5 +176,23 @@ Nu proberen we tensorflow werkende te krijgen op jetson
 
 zeer vervelend, want er is geen deftige ondersteuning voor arm
 
+We hebben het voor vandaag opgegeven
+
+
+
+### Vrijdag 12 februari
+
+**Ochtend**
+
+We kwamen met het briljante idee om om ipv de Jetson, de server die we mee hebben gekregen te gebruiken. Aangezien Tensorflow en anaconda geen goeie support hebben voor arm. We zijn begonnen met de nodige software te installeren.
+
+**Middag**
+
+Het is ons gelukt om [dit project](https://github.com/aqeelanwar/SocialDistancingAI) werkende te krijgen op de server. Nu kunnen we wat beginnen testen.
+
+**Avond**
+
+We hebben een gsm met droidcam gebruikt om video te streamen naar de server. Op de software kan je een vierkant aanduiden en moet je klikken op 2 punten die anderhalve meter uit elkaar zijn. Dan herkent de software mensen en of ze te dicht bij elkaar staan of niet.  
+
 
 
