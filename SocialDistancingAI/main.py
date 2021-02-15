@@ -3,6 +3,7 @@ import os
 import argparse
 from network_model import model
 from aux_functions import *
+import configparser
 
 # Suppress TF warnings
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
@@ -25,13 +26,18 @@ def get_mouse_points(event, x, y, flags, param):
 
 
 # Command-line input setup
-parser = argparse.ArgumentParser(description="SocialDistancing")
-parser.add_argument(
-    "--videopath", type=str, default="vid_short.mp4", help="Path to the video file"
-)
-args = parser.parse_args()
+# parser = argparse.ArgumentParser(description="SocialDistancing")
+# parser.add_argument(
+#     "--videopath", type=str, default="vid_short.mp4", help="Path to the video file"
+# )
+# args = parser.parse_args()
 
-input_video = args.videopath
+# input_video = args.videopath
+
+# Read config file
+config = configparser.ConfigParser()
+config.read('config.ini')
+input_video = config['videopath']
 
 # Define a DNN (deepl neural network) model
 DNN = model()
