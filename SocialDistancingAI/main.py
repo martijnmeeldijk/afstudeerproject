@@ -135,17 +135,17 @@ while cap.isOpened():
         )
 
     last_h = 75
-    text = "# 6ft violations: " + str(int(total_six_feet_violations))
+    text = "Violations: " + str(int(total_six_feet_violations))
     pedestrian_detect, last_h = put_text(pedestrian_detect, text, text_offset_y=last_h)
 
-    text = "Stay-at-home Index: " + str(np.round(100 * sh_index, 1)) + "%"
-    pedestrian_detect, last_h = put_text(pedestrian_detect, text, text_offset_y=last_h)
+    # text = "Stay-at-home Index: " + str(np.round(100 * sh_index, 1)) + "%"
+    # pedestrian_detect, last_h = put_text(pedestrian_detect, text, text_offset_y=last_h)
 
     if total_pairs != 0:
         sc_index = 1 - abs_six_feet_violations / total_pairs
 
-    text = "Social-distancing Index: " + str(np.round(100 * sc_index, 1)) + "%"
-    pedestrian_detect, last_h = put_text(pedestrian_detect, text, text_offset_y=last_h)
+    # text = "Social-distancing Index: " + str(np.round(100 * sc_index, 1)) + "%"
+    # pedestrian_detect, last_h = put_text(pedestrian_detect, text, text_offset_y=last_h)
 
     cv2.imshow("Street Cam", pedestrian_detect)
     cv2.waitKey(1)

@@ -30,6 +30,8 @@ class model:
     def get_category_index(self):
         return self.category_index
 
+    #De methode die effectief mensen detecteert, returnt de boxes rond de voetgangers
+    # en de hoeveelheid voetgangers op een bepaald moment
     def detect_pedestrians(self, frame):
         # Actual detection.
         # input_frame = cv2.resize(frame, (350, 200))
