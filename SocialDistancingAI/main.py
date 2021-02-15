@@ -80,16 +80,16 @@ while cap.isOpened():
     frame_h = frame.shape[0]
     frame_w = frame.shape[1]
 
-    no_text_image = frame
-
     if frame_num == 1:
         text_prompt = ["Bottom left", "Bottom right", "Top right", "Top Left", "Select two points 1.5m apart", "Select two points 1.5m apart"]
         # Ask user to mark parallel points and two points 6 feet apart. Order bl, br, tr, tl, p1, p2
         while True:
-            image = no_text_image
+            
+            image = frame.copy()
             cv2.putText(image, text_prompt[len(mouse_pts)], (10,500), cv2.FONT_HERSHEY_SIMPLEX, 1,(255,255,255),2)
             cv2.imshow("image", image)
             cv2.waitKey(1)
+            cv2.imshow("image", frame)
             if len(mouse_pts) == 7:
                 cv2.destroyWindow("image")
                 break
