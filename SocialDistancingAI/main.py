@@ -37,7 +37,7 @@ def get_mouse_points(event, x, y, flags, param):
 # Read config file
 config = configparser.ConfigParser()
 config.read('config.ini')
-input_video = config['videopath']
+input_video = config['DEFAULT']['videopath']
 
 # Define a DNN (deepl neural network) model
 DNN = model()
