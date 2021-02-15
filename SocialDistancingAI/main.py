@@ -81,7 +81,7 @@ while cap.isOpened():
     frame_w = frame.shape[1]
 
     if frame_num == 1:
-        text_prompt = ["Bottom left", "Bottom right", "Top right", "Top Left", "Select two points 1.5m apart", "Select two points 1.5m apart"]
+        text_prompt = ["Bottom left", "Bottom right", "Top right", "Top Left", "Select two points 1.5m apart", "Select two points 1.5m apart", "Well done!"]
         # Ask user to mark parallel points and two points 6 feet apart. Order bl, br, tr, tl, p1, p2
         while True:
             
