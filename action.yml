@@ -1,0 +1,12 @@
+# action.yml
+name: 'Social Distancing AI'
+description: 'Social Distancing AI'
+inputs:
+  who-to-greet:  link video
+    description: 'link video'
+outputs:
+  time: video
+    description: 'social distancing ai video output'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
