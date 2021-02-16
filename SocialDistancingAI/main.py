@@ -29,9 +29,7 @@ def get_mouse_points(event, x, y, flags, param):
 config = configparser.ConfigParser()
 config.read('config.ini')
 parser = argparse.ArgumentParser(description="SocialDistancing")
-parser.add_argument(
-    "--videopath", type=str, default="vid_short.mp4", help="Path to the video file"
-)
+parser.add_argument("--videopath", type=str, help="Path to the video file") #, default="vid_short.mp4"
 args = parser.parse_args()
 if args.videopath is not None:
     input_video = args.videopath;
