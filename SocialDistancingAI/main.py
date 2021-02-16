@@ -157,7 +157,8 @@ while cap.isOpened():
     # text = "Social-distancing Index: " + str(np.round(100 * sc_index, 1)) + "%"
     # pedestrian_detect, last_h = put_text(pedestrian_detect, text, text_offset_y=last_h)
 
-    cv2.imshow("Street Cam", pedestrian_detect)
+    resized = cv2.resize(pedestrian_detect, (1920, 1080))
+    cv2.imshow("Street Cam", resized)
     cv2.waitKey(1)
     # output_movie.write(pedestrian_detect)
     # bird_movie.write(bird_image)
