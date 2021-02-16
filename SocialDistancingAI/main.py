@@ -25,19 +25,18 @@ def get_mouse_points(event, x, y, flags, param):
         print(mouse_pts)
 
 
-# Command-line input setup
-# parser = argparse.ArgumentParser(description="SocialDistancing")
-# parser.add_argument(
-#     "--videopath", type=str, default="vid_short.mp4", help="Path to the video file"
-# )
-# args = parser.parse_args()
-
-# input_video = args.videopath
-
-# Read config file
+# Read config file or parse arguments
 config = configparser.ConfigParser()
 config.read('config.ini')
-input_video = config['DEFAULT']['videopath']
+parser = argparse.ArgumentParser(description="SocialDistancing")
+parser.add_argument(
+    "--videopath", type=str, default="vid_short.mp4", help="Path to the video file"
+)
+args = parser.parse_args()
+if args.videopath is not None:
+    input_video = args.videopath;
+else:
+    input_video = config['DEFAULT']['videopath']
 
 # Define a DNN (deepl neural network) model
 DNN = model()
