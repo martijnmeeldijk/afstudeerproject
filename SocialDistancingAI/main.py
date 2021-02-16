@@ -88,7 +88,7 @@ while cap.isOpened():
         # Ask user to mark parallel points and two points 6 feet apart. Order bl, br, tr, tl, p1, p2
         while True:
             
-            image = cv2.resize(frame, (1920, 1080))
+            image = frame
             image_with_text = image.copy()
             if len(mouse_pts) < 7:
                 cv2.putText(image_with_text, text_prompt[len(mouse_pts)], (10,500), cv2.FONT_HERSHEY_SIMPLEX, 1,(255,255,255),2)
@@ -157,8 +157,7 @@ while cap.isOpened():
     # text = "Social-distancing Index: " + str(np.round(100 * sc_index, 1)) + "%"
     # pedestrian_detect, last_h = put_text(pedestrian_detect, text, text_offset_y=last_h)
 
-    resized = cv2.resize(pedestrian_detect, (1920, 1080))
-    cv2.imshow("Street Cam", resized)
+    cv2.imshow("Street Cam", pedestrian_detect)
     cv2.waitKey(1)
     # output_movie.write(pedestrian_detect)
     # bird_movie.write(bird_image)
