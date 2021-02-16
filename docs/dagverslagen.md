@@ -196,3 +196,25 @@ We hebben een gsm met droidcam gebruikt om video te streamen naar de server. Op 
 
 
 
+
+
+## Week 2
+
+### Maandag 15 februari
+
+**Ochtend**
+
+Tim, Louis en Robbe maken een dockerfile voor gemakkelijkere employment
+
+Martijn werkt aan visuele feedback in de gui
+
+
+
+**Middag**
+
+Nog steeds bezig aan employment op docker
+
+Config verplaatst van command line naar config.ini
+
+
+
