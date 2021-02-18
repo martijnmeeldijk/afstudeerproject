@@ -16,5 +16,14 @@ ENV/
 env.bak/
 venv.bak/
 
+#jetson inference
+
+jetson-inference/build/
+jetson-inference/data/networks/
+jetson-inference/data/images/test
+jetson-inference/logs/
+*.pyc
+*.tar.gz
+
 #Hey jongens alles goed. Jullie zijn allemaal schatjes
 
