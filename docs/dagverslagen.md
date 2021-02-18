@@ -238,3 +238,21 @@ Zo te zien is een deel van de toneeltjes niet opgenomen. Spijtig...
 
 We proberen onze software te laten draaien op de beelden. 
 
+
+
+### Woensdag 17 februari
+
+**Ochtend**
+
+Martijn werkt aan een web interface voor het project, Tim probeert nog steeds onze image op de jetson te krijgen, Louis heeft een nieuwe methode gevonden
+
+**Middag**
+
+Meer van hetzelfde 
+
+**Avond**
+
+Louis heeft een nieuw ding werkend gekregen op de jetson
+
+
+
