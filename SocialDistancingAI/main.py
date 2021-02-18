@@ -159,5 +159,5 @@ while cap.isOpened():
 
     cv2.imshow("Street Cam", pedestrian_detect)
     cv2.waitKey(1)
-    output_movie.write(pedestrian_detect)
-    bird_movie.write(bird_image)
+    # output_movie.write(pedestrian_detect)
+    # bird_movie.write(bird_image)

@@ -218,3 +218,23 @@ Config verplaatst van command line naar config.ini
 
 
 
+**Avond**
+
+Docker werkt yeey
+
+
+
+### Dinsdag 16 februari
+
+**Ochtend & Middag**
+
+Afgesproken op de campus met de andere groep om beeldmateriaal op te nemen. Was best gezellig. We hebben allerlei scenarios gespeeld. 
+
+Zo te zien is een deel van de toneeltjes niet opgenomen. Spijtig...
+
+
+
+**Avond**
+
+We proberen onze software te laten draaien op de beelden. 
+
