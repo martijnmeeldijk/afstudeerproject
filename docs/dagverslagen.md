@@ -256,3 +256,15 @@ Louis heeft een nieuw ding werkend gekregen op de jetson
 
 
 
+
+
+ai model training software zoeken
+
+In text file 
+
+Statistieken met js
+
+
+
+
+
