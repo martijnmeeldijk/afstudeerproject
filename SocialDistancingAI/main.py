@@ -4,11 +4,16 @@ import argparse
 from network_model import model
 from aux_functions import *
 import configparser
+from logger import Logger
+from datetime import datetime
 
 # Suppress TF warnings
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
 mouse_pts = []
+
+logger = Logger("log.json")
+
 
 # gets coordinates from the mouse and adds them to the `mouse_pts` list
 def get_mouse_points(event, x, y, flags, param):
@@ -35,6 +40,8 @@ if args.videopath is not None:
     input_video = args.videopath;
 else:
     input_video = config['DEFAULT']['videopath']
+
+log_interval = config['DEFAULT']['log_interval']
 
 # Define a DNN (deepl neural network) model
 DNN = model()
@@ -115,6 +122,7 @@ while cap.isOpened():
         bird_image[:] = SOLID_BACK_COLOR
         pedestrian_detect = frame
 
+
     print("Processing frame: ", frame_num)
 
     # draw polygon of ROI
@@ -161,3 +169,9 @@ while cap.isOpened():
     cv2.waitKey(1)
     # output_movie.write(pedestrian_detect)
     # bird_movie.write(bird_image)
+
+    if (not frame_num/fps % int(log_interval)):
+        logger.write_log_entry(time = datetime.now().strftime("%m/%d/%Y, %H:%M:%S"), violations = str(int(total_six_feet_violations)), people = total_pairs*2)
+        
+
+
