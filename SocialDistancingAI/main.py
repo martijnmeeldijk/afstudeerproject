@@ -12,7 +12,7 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
 mouse_pts = []
 
-logger = Logger("log.json")
+logger = Logger("logs/")
 
 
 # gets coordinates from the mouse and adds them to the `mouse_pts` list
@@ -171,7 +171,7 @@ while cap.isOpened():
     # bird_movie.write(bird_image)
 
     if (not frame_num/fps % int(log_interval)):
-        logger.write_log_entry(time = datetime.now().strftime("%m/%d/%Y, %H:%M:%S"), violations = str(int(total_six_feet_violations)), people = total_pairs*2)
+        logger.write_log_entry(date = datetime.now().strftime("%d/%m/%Y"), time = datetime.now().strftime("%H:%M:%S"), violations = str(int(total_six_feet_violations)), people = total_pedestrians_detected)
         
 
 
