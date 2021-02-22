@@ -83,6 +83,7 @@
           <select style="width: 50vw;" class="form-select mb-3" id="log-dropdown" name="log"></select>
           <div style="width: 50vw;"><canvas id="canvas" ></canvas></div>
           
+          <p>Set time interval:</p>
           <div class="row" style="width: 50vw;">
             <div class="col-sm-4">
               <button class="btn btn-primary btn-block toggle-unit btn-sm" onclick="toggle_unit('second')" value="second">second</button>
@@ -249,7 +250,7 @@
                     parser: 'hh:mm:ss',
                     tooltipFormat: 'hh:mm:ss',
                     unit: unit,
-                    unitStepSize: 5,
+                    unitStepSize: 1,
                     displayFormats: {
                         second: 'hh:mm:ss',
                     }

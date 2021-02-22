@@ -66,6 +66,7 @@ bird_movie = cv2.VideoWriter(
 frame_num = 0
 total_pedestrians_detected = 0
 total_six_feet_violations = 0
+delta_six_feet_violations = 0
 total_pairs = 0
 abs_six_feet_violations = 0
 pedestrian_per_sec = 0
@@ -147,6 +148,7 @@ while cap.isOpened():
         total_pairs += pairs
 
         total_six_feet_violations += six_feet_violations / fps
+        delta_six_feet_violations += six_feet_violations / fps
         abs_six_feet_violations += six_feet_violations
         pedestrian_per_sec, sh_index = calculate_stay_at_home_index(
             total_pedestrians_detected, frame_num, fps
@@ -170,9 +172,9 @@ while cap.isOpened():
     # output_movie.write(pedestrian_detect)
     # bird_movie.write(bird_image)
 
-    #if (not frame_num/fps % int(log_interval)):
-    if True:
-        logger.write_log_entry(date = datetime.now().strftime("%d/%m/%Y"), time = datetime.now().strftime("%H:%M:%S"), violations = str(int(total_six_feet_violations)), people = total_pedestrians_detected)
+    if (not frame_num/fps % int(log_interval)):
+        logger.write_log_entry(date = datetime.now().strftime("%d/%m/%Y"), time = datetime.now().strftime("%H:%M:%S"), violations = str(int(delta_six_feet_violations)), people = total_pedestrians_detected)
+        delta_six_feet_violations = 0
         
 
 
