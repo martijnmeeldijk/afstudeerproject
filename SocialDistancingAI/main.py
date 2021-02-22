@@ -170,7 +170,8 @@ while cap.isOpened():
     # output_movie.write(pedestrian_detect)
     # bird_movie.write(bird_image)
 
-    if (not frame_num/fps % int(log_interval)):
+    #if (not frame_num/fps % int(log_interval)):
+    if True:
         logger.write_log_entry(date = datetime.now().strftime("%d/%m/%Y"), time = datetime.now().strftime("%H:%M:%S"), violations = str(int(total_six_feet_violations)), people = total_pedestrians_detected)
         
 

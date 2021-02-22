@@ -2,6 +2,7 @@ from flask import Flask
 from flask import render_template
 from os import walk
 import json
+from flask import Response
 
 
 
@@ -13,11 +14,13 @@ def hello_world():
 
 @app.route("/logs/<date>")
 def get_log(date):
-    with open(f'logs/{date}.json', 'r') as f:
+    with open(f'logs/{date}', 'r') as f:
         return f.read()
 
 @app.route("/get-all-logs")
 def get_all_logs():
     _, _, filenames = next(walk('logs'))
-    return json.dumps(filenames)
+    return Response(json.dumps(filenames),
+                    status=200,
+                    mimetype="application/json")
 
