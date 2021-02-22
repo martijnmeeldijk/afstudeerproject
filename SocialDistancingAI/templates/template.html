@@ -79,19 +79,19 @@
           --------------------------------------------------------------------------------------------------
           
           -->
-          <p>Select a log file to access:</p>
-          <select id="log-dropdown" name="log"></select>
+          <p>Select a log file to plot:</p>
+          <select style="width: 50vw;" class="form-select mb-3" id="log-dropdown" name="log"></select>
           <div style="width: 50vw;"><canvas id="canvas" ></canvas></div>
           
-          <div class="row">
-            <div class="col-md-4">
-              <button class="btn btn-primary btn-block toggle-unit" value="second">second</button>
+          <div class="row" style="width: 50vw;">
+            <div class="col-sm-4">
+              <button class="btn btn-primary btn-block toggle-unit btn-sm" onclick="toggle_unit('second')" value="second">second</button>
             </div>
-            <div class="col-md-4">
-              <button class="btn btn-primary btn-block toggle-unit" value="minute" >minute</button>
+            <div class="col-sm-4">
+              <button class="btn btn-primary btn-block toggle-unit btn-sm" onclick="toggle_unit('minute')" value="minute" >minute</button>
             </div>
-            <div class="col-md-4">
-              <button class="btn btn-primary btn-block toggle-unit" value="hour">hour</button>
+            <div class="col-sm-4">
+              <button class="btn btn-primary btn-block toggle-unit btn-sm" onclick="toggle_unit('hour')" value="hour">hour</button>
             </div>
             </div>
 
@@ -187,11 +187,13 @@
   var jsonfile = {}
   let dropdown = $('#log-dropdown');
   var unit = 'second'
+  var chart
 
   dropdown.empty();
   
   dropdown.append('<option selected="true" disabled>Select log file: </option>');
   dropdown.prop('selectedIndex', 0);
+  
   
   const url = 'http://localhost:5000/get-all-logs';
   
@@ -200,21 +202,25 @@
     $.each(data, function (key, entry) {
       dropdown.append($('<option></option>').attr('value', entry).text(entry));
     })
+    dropdown.prop('selectedIndex', 1);
+    create_chart();
   });
 
-  $('.toggle-unit').click(()=>{
-    console.log($(this).val())
-  })
+  function toggle_unit(string){
+    unit = string
+    create_chart()
+  }
 
-  $('#log-dropdown').change(()=>{
+
+  $('#log-dropdown').change(create_chart)
+
+
+  function create_chart(){
     value = $('#log-dropdown').val()
     $.get(`http://localhost:5000/logs/${value}`, (data)=> {
 
         if($.trim(data)){
           jsonfile = JSON.parse(data)
-        
-          console.log(jsonfile)
-          console.log(jsonfile.entries)
   
           var labels = jsonfile.entries.map(function(e) {
             return e.time;
@@ -229,7 +235,7 @@
             data: {
                labels: labels,
                datasets: [{
-                  label: 'Graph Line',
+                  label: 'Violations',
                   data: data,
                   backgroundColor: 'rgba(0, 119, 204, 0.3)'
                }]
@@ -288,12 +294,12 @@
                }]
             }
          };
-         var chart = new Chart(ctx, config);
+         chart = new Chart(ctx, config);
         }
 
        
     })
-  })
+  }
 
 </script>
 
