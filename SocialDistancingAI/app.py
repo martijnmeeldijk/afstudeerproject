@@ -3,6 +3,7 @@ from flask import render_template
 from os import walk
 import json
 from flask import Response
+import configparser
 
 
 
@@ -15,6 +16,10 @@ def dashboard():
 @app.route('/counter')
 def counter():
     return render_template('counter.html', page='counter')
+
+@app.route('/settings')
+def settings():
+    return render_template('settings.html', page='settings')
 
 @app.route("/logs/<date>")
 def get_log(date):
@@ -37,3 +42,21 @@ def get_violations():
 def get_people():
     with open(f'logs/extra/people', 'r') as f:
         return f.read()
+
+@app.route("/get-config")
+def get_config():
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    return Response(json.dumps(dict(config['DEFAULT'])),
+                    status=200,
+                    mimetype="application/json")
+
+@app.route("/set-config/<key>/<value>")
+def set_config(key, value):
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    config['DEFAULT'][key] = value
+    with open('config.ini', 'w') as configfile:
+        config.write(configfile)
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+    
