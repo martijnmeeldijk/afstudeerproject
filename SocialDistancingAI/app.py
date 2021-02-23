@@ -32,3 +32,8 @@ def get_all_logs():
 def get_violations():
     with open(f'logs/extra/violations', 'r') as f:
         return f.read()
+
+@app.route("/get-people")
+def get_people():
+    with open(f'logs/extra/people', 'r') as f:
+        return f.read()
