@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>Select a log file to plot:</p>
+<select style="width: 50vw;" class="form-select mb-3" id="log-dropdown" name="log"></select>
+<div style="width: 50vw;"><canvas id="canvas"></canvas></div>
+
+<p>Set time interval:</p>
+<div class="row" style="width: 50vw;">
+    <div class="col-sm-4">
+        <button class="btn btn-primary btn-block toggle-unit btn-sm" onclick="toggle_unit('second')"
+            value="second">second</button>
+    </div>
+    <div class="col-sm-4">
+        <button class="btn btn-primary btn-block toggle-unit btn-sm" onclick="toggle_unit('minute')"
+            value="minute">minute</button>
+    </div>
+    <div class="col-sm-4">
+        <button class="btn btn-primary btn-block toggle-unit btn-sm" onclick="toggle_unit('hour')"
+            value="hour">hour</button>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+  <script src="static/js/log-graph.js"></script>
+{% endblock scripts %}

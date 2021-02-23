@@ -1,0 +1,5 @@
+{
+    "python.pythonPath": "/Users/martijn/Desktop/School/1-6/afstudeerproject/SocialDistancingAI/mypython/bin/python3.6",
+    "python.formatting.provider": "autopep8",
+    "git.ignoreLimitWarning": true
+}

@@ -4,11 +4,16 @@ import argparse
 from network_model import model
 from aux_functions import *
 import configparser
+from logger import Logger
+from datetime import datetime
 
 # Suppress TF warnings
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
 mouse_pts = []
+
+logger = Logger("logs/")
+
 
 # gets coordinates from the mouse and adds them to the `mouse_pts` list
 def get_mouse_points(event, x, y, flags, param):
@@ -36,6 +41,8 @@ if args.videopath is not None:
 else:
     input_video = config['DEFAULT']['videopath']
 
+log_interval = config['DEFAULT']['log_interval']
+
 # Define a DNN (deepl neural network) model
 DNN = model()
 # Get video handle
@@ -62,6 +69,7 @@ bird_movie = cv2.VideoWriter(
 frame_num = 0
 total_pedestrians_detected = 0
 total_six_feet_violations = 0
+delta_six_feet_violations = 0
 total_pairs = 0
 abs_six_feet_violations = 0
 pedestrian_per_sec = 0
@@ -121,6 +129,7 @@ while cap.isOpened():
         bird_image[:] = SOLID_BACK_COLOR
         pedestrian_detect = frame
 
+
     print("Processing frame: ", frame_num)
     
 
@@ -146,6 +155,7 @@ while cap.isOpened():
         total_pairs += pairs
 
         total_six_feet_violations += six_feet_violations / fps
+        delta_six_feet_violations += six_feet_violations / fps
         abs_six_feet_violations += six_feet_violations
         pedestrian_per_sec, sh_index = calculate_stay_at_home_index(
             total_pedestrians_detected, frame_num, fps
@@ -168,3 +178,10 @@ while cap.isOpened():
     cv2.waitKey(1)
     # output_movie.write(pedestrian_detect)
     # bird_movie.write(bird_image)
+
+    if (not frame_num/fps % int(log_interval)):
+        logger.write_log_entry(date = datetime.now().strftime("%d/%m/%Y"), time = datetime.now().strftime("%H:%M:%S"), violations = str(int(delta_six_feet_violations)), people = total_pedestrians_detected)
+        delta_six_feet_violations = 0
+        
+
+

@@ -256,3 +256,71 @@ Louis heeft een nieuw ding werkend gekregen op de jetson
 
 
 
+
+
+ai model training software zoeken
+
+In text file 
+
+Statistieken met js
+
+
+
+### Donderdag 18 februari
+
+We proberen om de software op de jetson te krijgen
+
+Het is in de avond eindelijk gelukt
+
+
+
+
+
+### Vrijdag 19 februari
+
+**Ochtend**
+
+Alles is weer kapot, ineens werkte het weer toen we moet de klant moesten bellen
+
+ **Middag**
+
+De groep splitst op, martijn en robbe werken aan een systeem om te loggen en data te dumpen
+
+Tim en Louis proberen een manier te zoeken om het model bij te trainen en/of andere modellen uit te proberen
+
+
+
+### Maandag 22 februari
+
+Martijn en robbe werken verder aan een logging systeem, het is nu al uitgegroeid tot een volledige webapp met statistieken en coole grafieken
+
+
+
+Bezig geweest met een model om te zetten naar een frozen graph zodat het efficienter is om in gebruik te nemen. 
+
+Louis zocht op hoe je modellen moet bijtrainen, is heel moeilijk
+
+
+
+### Dinsdag 23 februari
+
+Louis: het is moeilijk om een model bij te trainen op windows
+
+
+
+Geens heeft niet super veel opmerkingen
+
+We hebben hem onze voortgang getoond 
+
+programma misschien runnen in gpu mode
+
+
+
+belasting van gpu enzo checken in jetson
+
+
+
+
+
+
+
