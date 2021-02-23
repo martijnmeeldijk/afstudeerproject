@@ -10,14 +10,23 @@ import numpy as np
 
 class model:
     def __init__(self):
-        # detection_graph, self.category_index = backbone.set_model('ssd_mobilenet_v1_fpn_shared_box_predictor_640x640_coco14_sync_2018_07_03',
+        #detection_graph, self.category_index = backbone.set_model('ssd_mobilenet_v1_fpn_shared_box_predictor_640x640_coco14_sync_2018_07_03',
         #                                                           'mscoco_label_map.pbtxt')
-        # # detection_graph, self.category_index = backbone.set_model(
-        # #     'faster_rcnn_resnet50_coco_2018_01_28',
-        # #     'mscoco_label_map.pbtxt')
+        #detection_graph, self.category_index = backbone.set_model(
+        #    'faster_rcnn_resnet50_coco_2018_01_28',
+        #     'mscoco_label_map.pbtxt')
+
         detection_graph, self.category_index = backbone.set_model(
             "ssd_mobilenet_v1_coco_2018_01_28", "mscoco_label_map.pbtxt"
         )
+
+
+        #detection_graph, self.category_index = backbone.set_model(
+        #    "ssdlite_mobilenet_v2_coco_2018_05_09", "mscoco_label_map.pbtxt"
+        #)
+       
+
+
         self.sess = tf.InteractiveSession(graph=detection_graph)
         self.image_tensor = detection_graph.get_tensor_by_name("image_tensor:0")
         self.detection_boxes = detection_graph.get_tensor_by_name("detection_boxes:0")
@@ -52,7 +61,7 @@ class model:
         classes = np.squeeze(classes).astype(np.int32)
         boxes = np.squeeze(boxes)
         scores = np.squeeze(scores)
-        pedestrian_score_threshold = 0.35
+        pedestrian_score_threshold = 0.25
         pedestrian_boxes = []
         total_pedestrians = 0
         for i in range(int(num[0])):

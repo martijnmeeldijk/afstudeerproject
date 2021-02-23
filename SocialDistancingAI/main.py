@@ -40,9 +40,12 @@ else:
 DNN = model()
 # Get video handle
 cap = cv2.VideoCapture(input_video)
+cap.set(cv2.CAP_PROP_BUFFERSIZE,0)
 height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 fps = int(cap.get(cv2.CAP_PROP_FPS))
+
+
 
 scale_w = 1.2 / 2
 scale_h = 4 / 2
@@ -71,10 +74,13 @@ cv2.setMouseCallback("image", get_mouse_points)
 num_mouse_points = 0
 first_frame_display = True
 
+
 # Process each frame, until end of video
 while cap.isOpened():
     frame_num += 1
+   
     ret, frame = cap.read()
+
 
     if not ret:
         print("end of the video file...")
@@ -116,6 +122,7 @@ while cap.isOpened():
         pedestrian_detect = frame
 
     print("Processing frame: ", frame_num)
+    
 
     # draw polygon of ROI
     pts = np.array(
