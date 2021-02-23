@@ -1,0 +1,40 @@
+import json
+import os
+from datetime import datetime
+
+class Logger:
+    def __init__(self, filename):
+        self.filename = filename + datetime.now().strftime("%d-%m-%Y") + ".json"
+
+    def write_log_entry(self, date = 0, time = 0, violations = 0, people = 0):
+        data = {
+                "date": date,
+                "time": time,
+                "violations": violations,
+                "people": people
+            } 
+
+            
+        print(f"trying to put {data} in {self.filename}")
+
+        if not os.path.exists(self.filename):
+            with open(self.filename, 'a+') as f:
+                json.dump({"entries": []}, f)
+
+        if os.path.exists(self.filename) and os.path.getsize(self.filename) == 0:
+            with open(self.filename, 'w') as f:
+                json.dump({"entries": []}, f)
+
+        with open(self.filename, 'r') as f:
+            contents = json.load(f)
+
+        with open(self.filename, 'w') as f:
+            contents['entries'].append(data) 
+            json.dump(contents, f)
+            
+
+
+        
+
+    
+
