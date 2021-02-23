@@ -1,11 +1,40 @@
 import cv2
 import os
 import argparse
+import queue
+import threading
+import time
 from network_model import model
 from aux_functions import *
 import configparser
 from logger import Logger
 from datetime import datetime
+
+
+class VideoCapture:
+
+  def __init__(self, name):
+    self.cap = cv2.VideoCapture(name)
+    self.q = queue.Queue()
+    t = threading.Thread(target=self._reader)
+    t.daemon = True
+    t.start()
+
+  # read frames as soon as they are available, keeping only most recent one
+  def _reader(self):
+    while True:
+      ret, frame = self.cap.read()
+      if not ret:
+        break
+      if not self.q.empty():
+        try:
+          self.q.get_nowait()   # discard previous (unprocessed) frame
+        except queue.Empty:
+          pass
+      self.q.put(frame)
+
+  def read(self):
+    return self.q.get()
 
 # Suppress TF warnings
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
@@ -46,11 +75,11 @@ log_interval = config['DEFAULT']['log_interval']
 # Define a DNN (deepl neural network) model
 DNN = model()
 # Get video handle
-cap = cv2.VideoCapture(input_video)
-cap.set(cv2.CAP_PROP_BUFFERSIZE,0)
-height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-fps = int(cap.get(cv2.CAP_PROP_FPS))
+cap = VideoCapture(input_video)
+
+height = 720
+width = 1280
+fps = 20
 
 
 
@@ -84,15 +113,15 @@ first_frame_display = True
 
 
 # Process each frame, until end of video
-while cap.isOpened():
+while True:
     frame_num += 1
-   
-    ret, frame = cap.read()
+    
+    #ret, frame = cap.read()
+    frame = cap.read()
 
-
-    if not ret:
-        print("end of the video file...")
-        break
+    #if not ret:
+    #    print("end of the video file...")
+    #    break
 
     frame_h = frame.shape[0]
     frame_w = frame.shape[1]
