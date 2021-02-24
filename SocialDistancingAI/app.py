@@ -47,7 +47,7 @@ def get_people():
 def get_config():
     config = configparser.ConfigParser()
     config.read('config.ini')
-    return Response(json.dumps(dict(config['DEFAULT'])),
+    return Response(json.dumps(dict(config['USER'])),
                     status=200,
                     mimetype="application/json")
 
@@ -55,8 +55,16 @@ def get_config():
 def set_config(key, value):
     config = configparser.ConfigParser()
     config.read('config.ini')
-    config['DEFAULT'][key] = value
+    config['USER'][key] = value
     with open('config.ini', 'w') as configfile:
         config.write(configfile)
     return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
-    
+
+@app.route("/set-default/<key>")
+def set_default(key):
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    config['USER'][key] = config['DEFAULT'][key]
+    with open('config.ini', 'w') as configfile:
+        config.write(configfile)
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'}    

@@ -25,6 +25,7 @@ function load_form(){
                 <input type="text" class="form-control" id="${entry}" value="${entry}" >
                 <div class="input-group-append">
                 <button type="button" onclick="submit_button('${key}', '${entry}')" style="margin: 0 !important" class="btn btn-outline-primary">submit</button>
+                <button type="button" onclick="restore_default('${key}')" style="margin: 0 !important" class="btn btn-outline-primary">Restore to default</button>
                 </div>
                 </div>
                 </div>
@@ -38,11 +39,18 @@ function load_form(){
 }
 
 function submit_button(key, value){
-
     val = $(`#${value}`).val();
+    console.log("VAL= " + val)
 
     $.get( `/set-config/${key}/${val}`, function( data ) {
         console.log(data);
         load_form();
       });
+}
+function restore_default(key){
+    $.get( `/set-default/${key}`, function( data ) {
+        setTimeout(500)
+        load_form();
+      });
+
 }

@@ -66,11 +66,17 @@ parser = argparse.ArgumentParser(description="SocialDistancing")
 parser.add_argument("--videopath", type=str, help="Path to the video file") #, default="vid_short.mp4"
 args = parser.parse_args()
 if args.videopath is not None:
-    input_video = args.videopath;
+    input_video = args.videopath
 else:
-    input_video = config['DEFAULT']['videopath']
+    if config['USER']['videopath']: #If the string is not empty (falsy)
+        input_video = config['USER']['videopath']
+    else:
+        input_video = config['DEFAULT']['videopath']
 
-log_interval = config['DEFAULT']['log_interval']
+if config['USER']['log_interval']:
+    log_interval = config['USER']['log_interval']
+else:
+    log_interval = config['DEFAULT']['log_interval']
 
 # Define a DNN (deepl neural network) model
 DNN = model()
