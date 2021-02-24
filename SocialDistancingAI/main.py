@@ -134,7 +134,7 @@ while True:
             image = frame
             image_with_text = image.copy()
             if len(mouse_pts) < 7:
-                cv2.putText(image_with_text, text_prompt[len(mouse_pts)], (10,500), cv2.FONT_HERSHEY_SIMPLEX, 1,(255,255,255),2)
+                cv2.putText(image_with_text, text_prompt[len(mouse_pts)], (10,250), cv2.FONT_HERSHEY_SIMPLEX, 1,(255,255,255),2)
             cv2.imshow("image", image_with_text)
             cv2.waitKey(1)
             if len(mouse_pts) == 7:
