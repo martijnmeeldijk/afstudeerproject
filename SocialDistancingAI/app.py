@@ -60,12 +60,11 @@ def set_config(key, value):
         config.write(configfile)
     return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
-@app.route("/get-default-config")
-def get_default_config():
+@app.route("/set-default/<key>")
+def set_default(key):
     config = configparser.ConfigParser()
     config.read('config.ini')
-    return Response(json.dumps(dict(config['DEFAULT'])),
-                    status=200,
-                    mimetype="application/json")
-
-    
+    config['USER'][key] = config['DEFAULT'][key]
+    with open('config.ini', 'w') as configfile:
+        config.write(configfile)
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'}    
