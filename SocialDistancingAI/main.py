@@ -75,7 +75,10 @@ log_interval = config['DEFAULT']['log_interval']
 # Define a DNN (deepl neural network) model
 DNN = model()
 # Get video handle
-cap = VideoCapture(input_video)
+if (config['DEFAULT']['is_video'] == "yes"):
+    cap = cv2.VideoCapture(input_video)
+else:
+    cap = VideoCapture(input_video)
 
 height = 720
 width = 1280
@@ -115,9 +118,10 @@ first_frame_display = True
 # Process each frame, until end of video
 while True:
     frame_num += 1
-    
-    #ret, frame = cap.read()
-    frame = cap.read()
+    if (config['DEFAULT']['is_video'] == "yes"):
+        ret, frame = cap.read()
+    else:
+        frame = cap.read()
 
     #if not ret:
     #    print("end of the video file...")
@@ -197,14 +201,14 @@ while True:
     # text = "Stay-at-home Index: " + str(np.round(100 * sh_index, 1)) + "%"
     # pedestrian_detect, last_h = put_text(pedestrian_detect, text, text_offset_y=last_h)
 
-    if total_pairs != 0:
-        sc_index = 1 - abs_six_feet_violations / total_pairs
+    #if total_pairs != 0:
+    #    sc_index = 1 - abs_six_feet_violations / total_pairs
 
     # text = "Social-distancing Index: " + str(np.round(100 * sc_index, 1)) + "%"
     # pedestrian_detect, last_h = put_text(pedestrian_detect, text, text_offset_y=last_h)
 
     cv2.imshow("Street Cam", pedestrian_detect)
-    cv2.waitKey(1)
+    #cv2.waitKey(1)
     # output_movie.write(pedestrian_detect)
     # bird_movie.write(bird_image)
 
