@@ -1,5 +1,26 @@
 # Een verslag per dag
 
+## Inhoud
+
+* [Week 1](#week-1)
+     * [Maandag 8 februari](#maandag-8-februari)
+     * [Dinsdag 9 februari](#dinsdag-9-februari)
+     * [Woensdag 10 februari](#woensdag-10-februari)
+     * [Donderdag 11 februari](#donderdag-11-februari)
+     * [Vrijdag 12 februari](#vrijdag-12-februari)
+* [Week 2](#week-2)
+     * [Maandag 15 februari](#maandag-15-februari)
+     * [Dinsdag 16 februari](#dinsdag-16-februari)
+     * [Woensdag 17 februari](#woensdag-17-februari)
+     * [Donderdag 18 februari](#donderdag-18-februari)
+     * [Vrijdag 19 februari](#vrijdag-19-februari)
+* [Week 3](#week-3)
+     * [Maandag 22 februari](#maandag-22-februari)
+     * [Dinsdag 23 februari](#dinsdag-23-februari)
+     * [Woensdag 24 februari](#woensdag-24-februari)
+
+
+
 
 
 ## Week 1
@@ -290,6 +311,8 @@ Tim en Louis proberen een manier te zoeken om het model bij te trainen en/of and
 
 
 
+## Week 3
+
 ### Maandag 22 februari
 
 Martijn en robbe werken verder aan een logging systeem, het is nu al uitgegroeid tot een volledige webapp met statistieken en coole grafieken
@@ -317,6 +340,16 @@ programma misschien runnen in gpu mode
 
 
 belasting van gpu enzo checken in jetson
+
+
+
+### Woensdag 24 februari
+
+We zijn bezig met het model bij te trainen met tensorflow
+
+We breiden de webapp uit om de configuratie in de app te doen, zodat er geen files moeten aangepast worden
+
+De webapp gedebugt, daar zaten we wel even aan vast
 
 
 
