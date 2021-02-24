@@ -1,11 +1,40 @@
 import cv2
 import os
 import argparse
+import queue
+import threading
+import time
 from network_model import model
 from aux_functions import *
 import configparser
 from logger import Logger
 from datetime import datetime
+
+
+class VideoCapture:
+
+  def __init__(self, name):
+    self.cap = cv2.VideoCapture(name)
+    self.q = queue.Queue()
+    t = threading.Thread(target=self._reader)
+    t.daemon = True
+    t.start()
+
+  # read frames as soon as they are available, keeping only most recent one
+  def _reader(self):
+    while True:
+      ret, frame = self.cap.read()
+      if not ret:
+        break
+      if not self.q.empty():
+        try:
+          self.q.get_nowait()   # discard previous (unprocessed) frame
+        except queue.Empty:
+          pass
+      self.q.put(frame)
+
+  def read(self):
+    return self.q.get()
 
 # Suppress TF warnings
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
@@ -52,11 +81,14 @@ else:
 # Define a DNN (deepl neural network) model
 DNN = model()
 # Get video handle
-cap = cv2.VideoCapture(input_video)
-cap.set(cv2.CAP_PROP_BUFFERSIZE,0)
-height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-fps = int(cap.get(cv2.CAP_PROP_FPS))
+if (config['DEFAULT']['is_video'] == "yes"):
+    cap = cv2.VideoCapture(input_video)
+else:
+    cap = VideoCapture(input_video)
+
+height = 720
+width = 1280
+fps = 20
 
 
 
@@ -90,15 +122,16 @@ first_frame_display = True
 
 
 # Process each frame, until end of video
-while cap.isOpened():
+while True:
     frame_num += 1
-   
-    ret, frame = cap.read()
+    if (config['DEFAULT']['is_video'] == "yes"):
+        ret, frame = cap.read()
+    else:
+        frame = cap.read()
 
-
-    if not ret:
-        print("end of the video file...")
-        break
+    #if not ret:
+    #    print("end of the video file...")
+    #    break
 
     frame_h = frame.shape[0]
     frame_w = frame.shape[1]
@@ -111,7 +144,7 @@ while cap.isOpened():
             image = frame
             image_with_text = image.copy()
             if len(mouse_pts) < 7:
-                cv2.putText(image_with_text, text_prompt[len(mouse_pts)], (10,500), cv2.FONT_HERSHEY_SIMPLEX, 1,(255,255,255),2)
+                cv2.putText(image_with_text, text_prompt[len(mouse_pts)], (10,250), cv2.FONT_HERSHEY_SIMPLEX, 1,(255,255,255),2)
             cv2.imshow("image", image_with_text)
             cv2.waitKey(1)
             if len(mouse_pts) == 7:
@@ -174,14 +207,14 @@ while cap.isOpened():
     # text = "Stay-at-home Index: " + str(np.round(100 * sh_index, 1)) + "%"
     # pedestrian_detect, last_h = put_text(pedestrian_detect, text, text_offset_y=last_h)
 
-    if total_pairs != 0:
-        sc_index = 1 - abs_six_feet_violations / total_pairs
+    #if total_pairs != 0:
+    #    sc_index = 1 - abs_six_feet_violations / total_pairs
 
     # text = "Social-distancing Index: " + str(np.round(100 * sc_index, 1)) + "%"
     # pedestrian_detect, last_h = put_text(pedestrian_detect, text, text_offset_y=last_h)
 
     cv2.imshow("Street Cam", pedestrian_detect)
-    cv2.waitKey(1)
+    #cv2.waitKey(1)
     # output_movie.write(pedestrian_detect)
     # bird_movie.write(bird_image)
 
