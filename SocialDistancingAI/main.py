@@ -68,7 +68,7 @@ args = parser.parse_args()
 if args.videopath is not None:
     input_video = args.videopath
 else:
-    if config['USER']['videopath']: #If the string is not empty (falsy)
+    if config['USER']['videopath'] and config['USER']['videopath'] is not 'undefined': #If the string is not empty (falsy)
         input_video = config['USER']['videopath']
     else:
         input_video = config['DEFAULT']['videopath']

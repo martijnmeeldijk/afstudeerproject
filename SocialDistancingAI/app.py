@@ -67,4 +67,5 @@ def set_default(key):
     config['USER'][key] = config['DEFAULT'][key]
     with open('config.ini', 'w') as configfile:
         config.write(configfile)
-    return json.dumps({'success':True}), 200, {'ContentType':'application/json'}    
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+    
