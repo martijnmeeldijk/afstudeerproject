@@ -48,6 +48,12 @@
               <p>Live Counter</p>
             </a>
           </li>
+          <li class="nav-item {% if page == 'settings' %}active{% endif %}">
+            <a class="nav-link" href="/settings">
+              <i class="material-icons">settings</i>
+              <p>Settings</p>
+            </a>
+          </li>
           <!-- your sidebar here -->
         </ul>
       </div>
@@ -89,27 +95,9 @@
           {% block content %}{% endblock %}
 
         </div>
+        
       </div>
-      <footer class="footer">
-        <div class="container-fluid">
-          <nav class="float-left">
-            <ul>
-              <li>
-                <a href="">
-                  Een link
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div class="copyright float-right">
-            &copy;
-            <script>
-              document.write(new Date().getFullYear())
-            </script>, UCLL
-          </div>
-          <!-- your footer here -->
-        </div>
-      </footer>
+
     </div>
   </div>
 </body>
