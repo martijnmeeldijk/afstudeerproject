@@ -81,7 +81,7 @@ else:
 # Define a DNN (deepl neural network) model
 DNN = model()
 # Get video handle
-if (config['DEFAULT']['is_video'] == "yes"):
+if (config['USER']['is_video'] == "yes"):
     cap = cv2.VideoCapture(input_video)
 else:
     cap = VideoCapture(input_video)
@@ -124,7 +124,7 @@ first_frame_display = True
 # Process each frame, until end of video
 while True:
     frame_num += 1
-    if (config['DEFAULT']['is_video'] == "yes"):
+    if (config['USER']['is_video'] == "yes"):
         ret, frame = cap.read()
     else:
         frame = cap.read()
@@ -221,6 +221,7 @@ while True:
     if (not frame_num/fps % int(log_interval)):
         logger.write_log_entry(date = datetime.now().strftime("%d/%m/%Y"), time = datetime.now().strftime("%H:%M:%S"), violations = str(int(delta_six_feet_violations)), people = total_pedestrians_detected)
         delta_six_feet_violations = 0
+        logger.write_live_counter(violations= int(delta_six_feet_violations) , people = total_pedestrians_detected)
         
 
 

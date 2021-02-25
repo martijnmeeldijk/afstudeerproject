@@ -5,6 +5,8 @@ from datetime import datetime
 class Logger:
     def __init__(self, filename):
         self.filename = filename + datetime.now().strftime("%d-%m-%Y") + ".json"
+        self.live_people = filename + "/extra/people"
+        self.live_violations = filename + "/extra/violations"
 
     def write_log_entry(self, date = 0, time = 0, violations = 0, people = 0):
         data = {
@@ -32,6 +34,11 @@ class Logger:
             contents['entries'].append(data) 
             json.dump(contents, f)
             
+    def write_live_counter(self, people = 0, violations = 0):
+        with open(self.live_people, 'w') as f:
+            f.write(str(people))
+        with open(self.live_violations, 'w') as f:
+            f.write(str(violations))
 
 
         

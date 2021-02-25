@@ -1,5 +1,5 @@
 jQuery(function ($) {
-    setInterval(update_numbers, 5000);
+    setInterval(update_numbers, 1000);
     update_numbers();
     function update_numbers(){
         $.get( "/get-people", function( data ) {
