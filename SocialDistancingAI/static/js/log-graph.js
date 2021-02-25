@@ -2,7 +2,7 @@ var jsonfile = {};
 let dropdown = $('#log-dropdown');
 var unit = 'second';
 var chart;
-const url = 'http://localhost:5000/get-all-logs';
+const url = '/get-all-logs';
 
 $(document).ready(function () {
     dropdown.empty();
@@ -37,7 +37,7 @@ function create_chart() {
 
     context.clearRect(0, 0, canvas.width, canvas.height);
     value = $('#log-dropdown').val();
-    $.get(`http://localhost:5000/logs/${value}`, (data) => {
+    $.get(`/logs/${value}`, (data) => {
 
         if ($.trim(data)) {
             jsonfile = JSON.parse(data);

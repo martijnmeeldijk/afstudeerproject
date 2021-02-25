@@ -1,4 +1,4 @@
-const url = 'http://localhost:5000/get-config';
+const url = '/get-config';
 let form = $('.form');
 
 
@@ -43,7 +43,7 @@ function submit_button(key, value){
 
     console.log("VAL= " + val);
 
-    $.get( `/set-config/${key}/${val}`, function( data ) {
+    $.get( `/set-config/${key}?value=${val}`, function( data ) {
         console.log(data);
         load_form();
       });
