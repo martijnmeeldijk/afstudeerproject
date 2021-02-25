@@ -82,3 +82,9 @@ def gen(stream):
 def video_feed():
     return Response(gen(VideoOutput()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+
+
+@app.route('/video')
+def video():
+    return render_template('video.html', page='video')
+
