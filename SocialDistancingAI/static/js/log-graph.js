@@ -94,7 +94,12 @@ function create_chart() {
                                 labelString: 'Violations'
                             }
                         }]
-                    }
+                    },
+                    elements: {
+                        line: {
+                            tension: 0 // disables bezier curves
+                        }
+                    },
                 }
 
             };
