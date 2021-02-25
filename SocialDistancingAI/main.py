@@ -154,27 +154,28 @@ class VideoOutput:
                     cv2.waitKey(1)
                     break
                 self.first_frame_display = False
-                print(len(self.mouse_pts))
-                print(self.mouse_pts)
             self.four_points = self.mouse_pts
+            print(self.four_points)
+        
+
  
             
-            global M, Minv, pts, src, d_thresh, bird_image, pedestrian_detect
-            # Get perspective
-            M, Minv = get_camera_perspective(frame, self.four_points[0:4])
-            pts = src = np.float32(np.array([self.four_points[4:]]))
-            warped_pt = cv2.perspectiveTransform(pts, M)[0]
-            d_thresh = np.sqrt(
-                (warped_pt[0][0] - warped_pt[1][0]) ** 2
-                + (warped_pt[0][1] - warped_pt[1][1]) ** 2
-            )
-            bird_image = np.zeros(
-                (int(frame_h * self.scale_h), int(frame_w * self.scale_w), 3), np.uint8
-            )
+        global M, Minv, pts, src, d_thresh, bird_image, pedestrian_detect
+        # Get perspective
+        M, Minv = get_camera_perspective(frame, self.four_points[0:4])
+        pts = src = np.float32(np.array([self.four_points[4:]]))
+        warped_pt = cv2.perspectiveTransform(pts, M)[0]
+        d_thresh = np.sqrt(
+            (warped_pt[0][0] - warped_pt[1][0]) ** 2
+            + (warped_pt[0][1] - warped_pt[1][1]) ** 2
+        )
+        bird_image = np.zeros(
+            (int(frame_h * self.scale_h), int(frame_w * self.scale_w), 3), np.uint8
+        )
 
-            bird_image[:] = self.SOLID_BACK_COLOR
-            pedestrian_detect = frame
-
+        bird_image[:] = self.SOLID_BACK_COLOR
+        pedestrian_detect = frame
+        
 
         print("Processing frame: ", self.frame_num)
         
@@ -235,6 +236,3 @@ class VideoOutput:
         ret, jpeg = cv2.imencode('.jpg', frame)
         return jpeg.tobytes()
 
-videooutput = VideoOutput()
-while True:
-    videooutput.get_frame()
