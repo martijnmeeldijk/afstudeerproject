@@ -4,6 +4,7 @@ import argparse
 import queue
 import threading
 import time
+import json
 from network_model import model
 from aux_functions import *
 import configparser
@@ -20,6 +21,10 @@ class VideoCapture:
     t = threading.Thread(target=self._reader)
     t.daemon = True
     t.start()
+
+  def __del__(self):
+      #releasing camera
+      self.cap.release()
 
   # read frames as soon as they are available, keeping only most recent one
   def _reader(self):
@@ -155,8 +160,14 @@ class VideoOutput:
                     break
                 self.first_frame_display = False
             self.four_points = self.mouse_pts
-            print(self.four_points)
+            self.config['USER']['3d_points'] = json.dumps(self.four_points)
+            with open('config.ini', 'w') as configfile:
+                self.config.write(configfile)
+
         
+        else:
+            self.four_points = json.loads(self.config['USER']['3d_points'])
+
 
  
             

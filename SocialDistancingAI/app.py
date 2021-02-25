@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import render_template
+from flask import request
 from os import walk
 import json
 from flask import Response
@@ -9,6 +10,9 @@ from main import VideoOutput
 
 
 app = Flask(__name__)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', debug = False)
 
 @app.route('/')
 def dashboard():
@@ -52,11 +56,11 @@ def get_config():
                     status=200,
                     mimetype="application/json")
 
-@app.route("/set-config/<key>/<value>")
-def set_config(key, value):
+@app.route("/set-config/<key>/")
+def set_config(key):
     config = configparser.ConfigParser()
     config.read('config.ini')
-    config['USER'][key] = value
+    config['USER'][key] = request.args.get('value').strip('"')
     with open('config.ini', 'w') as configfile:
         config.write(configfile)
     return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
