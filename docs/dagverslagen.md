@@ -14,9 +14,9 @@ tutorials gekeken over nvidia jetson
 
 **Middag**: 
 
-gebeld met Geens en Swenny, wat duidelijkheid over het project
+gebeld met meneer Geens en Swennen, wat duidelijkheid over het project
 
-We moeten in afwachting van de camera's wat opzoekwerk doen en prutsen met de reverse proxy
+We moeten in afwachting van de camera's wat opzoekwerk doen en leren hoe we een reverse proxy opzetten om aan de camerabeelden te kunnen.
 
 
 
@@ -174,9 +174,7 @@ Meeting met Strypsteen, wat meer duidelijkheid gekregen
 
 Nu proberen we tensorflow werkende te krijgen op jetson
 
-zeer vervelend, want er is geen deftige ondersteuning voor arm
-
-We hebben het voor vandaag opgegeven
+zeer vervelend, want er is geen deftige ondersteuning voor ARM
 
 
 
@@ -204,7 +202,7 @@ We hebben een gsm met droidcam gebruikt om video te streamen naar de server. Op 
 
 **Ochtend**
 
-Tim, Louis en Robbe maken een dockerfile voor gemakkelijkere employment
+Tim, Louis en Robbe maken een dockerfile voor gemakkelijkere deployment
 
 Martijn werkt aan visuele feedback in de gui
 
@@ -212,7 +210,7 @@ Martijn werkt aan visuele feedback in de gui
 
 **Middag**
 
-Nog steeds bezig aan employment op docker
+Nog steeds bezig aan deployment op docker
 
 Config verplaatst van command line naar config.ini
 
@@ -253,10 +251,6 @@ Meer van hetzelfde
 **Avond**
 
 Louis heeft een nieuw ding werkend gekregen op de jetson
-
-
-
-
 
 ai model training software zoeken
 
@@ -313,8 +307,6 @@ Geens heeft niet super veel opmerkingen
 We hebben hem onze voortgang getoond 
 
 programma misschien runnen in gpu mode
-
-
 
 belasting van gpu enzo checken in jetson
 
