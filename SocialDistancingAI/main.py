@@ -96,7 +96,6 @@ class VideoOutput:
         self.sc_index = 1
 
         cv2.namedWindow("image")
-        cv2.startWindowThread()
         # makes it so that `get_mouse_points` is used to handle mouse events
         cv2.setMouseCallback("image", self.get_mouse_points)
         self.num_mouse_points = 0
