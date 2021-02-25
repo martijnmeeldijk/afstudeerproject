@@ -12,6 +12,7 @@ from datetime import datetime
 
 
 class VideoCapture:
+  image = None
 
   def __init__(self, name):
     self.cap = cv2.VideoCapture(name)
@@ -47,16 +48,11 @@ class VideoOutput:
           # Read config file or parse arguments
         self.config = configparser.ConfigParser()
         self.config.read('config.ini')
-        self.parser = argparse.ArgumentParser(description="SocialDistancing")
-        self.parser.add_argument("--videopath", type=str, help="Path to the video file") #, default="vid_short.mp4"
-        self.args = self.parser.parse_args()
-        if self.args.videopath is not None:
-            input_video = self.args.videopath
+     
+        if self.config['USER']['videopath']: #If the string is not empty (falsy)
+            input_video = self.config['USER']['videopath']
         else:
-            if self.config['USER']['videopath']: #If the string is not empty (falsy)
-                input_video = self.config['USER']['videopath']
-            else:
-                input_video = self.config['DEFAULT']['videopath']
+            input_video = self.config['DEFAULT']['videopath']
 
         if self.config['USER']['log_interval']:
             self.log_interval = self.config['USER']['log_interval']
@@ -82,11 +78,11 @@ class VideoOutput:
 
         self.SOLID_BACK_COLOR = (41, 41, 41)
         # Setuo video writer
-        self.fourcc = cv2.VideoWriter_fourcc(*"XVID")
-        self.output_movie = cv2.VideoWriter("Pedestrian_detect.avi", self.fourcc, self.fps, (self.width, self.height))
-        self.bird_movie = cv2.VideoWriter(
-            "Pedestrian_bird.avi", self.fourcc, self.fps, (int(self.width * self.scale_w), int(self.height * self.scale_h))
-        )
+        #self.fourcc = cv2.VideoWriter_fourcc(*"XVID")
+        #self.output_movie = cv2.VideoWriter("Pedestrian_detect.avi", self.fourcc, self.fps, (self.width, self.height))
+        #self.bird_movie = cv2.VideoWriter(
+        #    "Pedestrian_bird.avi", self.fourcc, self.fps, (int(self.width * self.scale_w), int(self.height * self.scale_h))
+        #)
 
         # Initialize necessary variables
         self.frame_num = 0
@@ -100,25 +96,29 @@ class VideoOutput:
         self.sc_index = 1
 
         cv2.namedWindow("image")
+        cv2.startWindowThread()
         # makes it so that `get_mouse_points` is used to handle mouse events
         cv2.setMouseCallback("image", self.get_mouse_points)
         self.num_mouse_points = 0
         self.first_frame_display = True
+        self.mouseX = 0
+        self.mouseY = 0
+        self.mouse_pts = []
+        self.four_points = []
 
 
     # gets coordinates from the mouse and adds them to the `mouse_pts` list
     def get_mouse_points(self, event, x, y, flags, param):
         # Used to mark 4 points on the frame zero of the video that will be warped
         # Used to mark 2 points on the frame zero of the video that are 6 feet away
-        global mouseX, mouseY, mouse_pts
+        #global mouseX, mouseY, mouse_pts
         if event == cv2.EVENT_LBUTTONDOWN:
-            mouseX, mouseY = x, y
-            cv2.circle(image, (x, y), 10, (0, 255, 255), 10)
-            if "mouse_pts" not in globals():
-                mouse_pts = []
-            mouse_pts.append((x, y))
+            self.mouseX, self.mouseY = x, y
+            cv2.circle(self.image, (x, y), 10, (0, 255, 255), 10)
+         
+            self.mouse_pts.append((x, y))
             print("Point detected")
-            print(mouse_pts)
+            #print(mouse_pts)
 
 
   
@@ -143,23 +143,27 @@ class VideoOutput:
             text_prompt = ["Select Bottom Left", "Select Bottom Right", "Select Top Left", "Select Top Right", "Select two points 1.5m apart", "Select two points 1.5m apart", "Well done!"]
             # Ask user to mark parallel points and two points 6 feet apart. Order bl, br, tr, tl, p1, p2
             while True:
-                image = frame
-                image_with_text = image.copy()
+                self.image = frame
+                image_with_text = self.image.copy()
                 if len(self.mouse_pts) < 7:
                     cv2.putText(image_with_text, text_prompt[len(self.mouse_pts)], (10,250), cv2.FONT_HERSHEY_SIMPLEX, 1,(255,255,255),2)
                 cv2.imshow("image", image_with_text)
                 cv2.waitKey(1)
                 if len(self.mouse_pts) == 7:
+                    print("DESTROYING!!!!!!!!!!!!!!!!!!")
                     cv2.destroyWindow("image")
+                    cv2.waitKey(1)
                     break
                 self.first_frame_display = False
-            four_points = mouse_pts
-            print(self.mouse_pts)
+                print(len(self.mouse_pts))
+                print(self.mouse_pts)
+            self.four_points = self.mouse_pts
+ 
             
-
+            global M, Minv, pts, src, d_thresh, bird_image, pedestrian_detect
             # Get perspective
-            M, Minv = get_camera_perspective(frame, four_points[0:4])
-            pts = src = np.float32(np.array([four_points[4:]]))
+            M, Minv = get_camera_perspective(frame, self.four_points[0:4])
+            pts = src = np.float32(np.array([self.four_points[4:]]))
             warped_pt = cv2.perspectiveTransform(pts, M)[0]
             d_thresh = np.sqrt(
                 (warped_pt[0][0] - warped_pt[1][0]) ** 2
@@ -178,7 +182,7 @@ class VideoOutput:
 
         # draw polygon of ROI
         pts = np.array(
-            [four_points[0], four_points[1], four_points[3], four_points[2]], np.int32
+            [self.four_points[0], self.four_points[1], self.four_points[3], self.four_points[2]], np.int32
         )
         cv2.polylines(frame, [pts], True, (0, 255, 255), thickness=4)
 
@@ -217,17 +221,20 @@ class VideoOutput:
         # text = "Social-distancing Index: " + str(np.round(100 * sc_index, 1)) + "%"
         # pedestrian_detect, last_h = put_text(pedestrian_detect, text, text_offset_y=last_h)
 
-        cv2.imshow("Street Cam", pedestrian_detect)
+        #cv2.imshow("Street Cam", pedestrian_detect)
         #cv2.waitKey(1)
         # output_movie.write(pedestrian_detect)
         # bird_movie.write(bird_image)
+
+
 
         if (not self.frame_num/self.fps % int(self.log_interval)):
             self.logger.write_log_entry(date = datetime.now().strftime("%d/%m/%Y"), time = datetime.now().strftime("%H:%M:%S"), violations = str(int(self.delta_six_feet_violations)), people = self.total_pedestrians_detected)
             delta_six_feet_violations = 0
             self.logger.write_live_counter(violations= int(delta_six_feet_violations) , people = self.total_pedestrians_detected)
             
-
+        ret, jpeg = cv2.imencode('.jpg', frame)
+        return jpeg.tobytes()
 
 videooutput = VideoOutput()
 while True:
