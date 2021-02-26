@@ -323,7 +323,7 @@ Louis zocht op hoe je modellen moet bijtrainen, is heel moeilijk
 
 Louis: het is moeilijk om een model bij te trainen op windows
 
-
+Tim: Verder zetten van het proberen van een model bij te trainen. Een oplossing gevonden die zeer belovend was. Werkende training van model is met tensorflow 2 maar onze applicatie werkt met tensorflow wat voor problemen zorgt.
 
 Geens heeft niet super veel opmerkingen
 
@@ -337,12 +337,19 @@ belasting van gpu enzo checken in jetson
 
 ### Woensdag 24 februari
 
-We zijn bezig met het model bij te trainen met tensorflow
+We zijn bezig met het model bij te trainen met tensorflow. Toch gelukt om model bij te trainen met tensorflow 1 maar het uiteindelijke resultaat is heel slecht. Na vele uren komen we op een loss van 4.758 uit voor onze model terwijl een aangeraden loss 0.3 is (loss is een beschrijving van de nauwkeurigheid van het model in cijfers)
 
 We breiden de webapp uit om de configuratie in de app te doen, zodat er geen files moeten aangepast worden
 
 De webapp gedebugt, daar zaten we wel even aan vast
 
+### Donderdag 25 februari
+
+Het model bijtrainen in tensorflow 2 is veel belovend want de loss zit rond 0.35. Het omzetten van het model van tensorflow2 naar tensorflow1 gaat wel zorgen voor moeilijkheden.
+
+### Vrijdag 26 februari
+
+Donderdag 25feb en vrijdag 26feb de hele tijd bezig geweest met het proberen omzetten van het model van tensorflow2 naar tensorflow1 maar deze zijn onsuccesvol. We gaan het hier moeten laten en onze bevindingen moeten delen met de klant dat het wel gaat maar niet in deze gelimiteerde tijd. Teveel errors en bugs in tensorflow die door het bedrijf zelf nog niet zijn opgelost.
 
 
 
