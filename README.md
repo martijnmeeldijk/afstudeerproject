@@ -11,6 +11,7 @@ Zie de volgende links voor meer info over de voortgang van ons project.
 
 * [Logboek per dag](https://github.com/martijnmeeldijk/afstudeerproject/blob/master/docs/dagverslagen.md)
 * [Klantvergaderingen](https://github.com/martijnmeeldijk/afstudeerproject/blob/master/docs/klantvergaderingen.md)
+* [Problemen bij het trainen van AI](https://github.com/martijnmeeldijk/afstudeerproject/blob/master/docs/ProblemenMetBijtrainenVanAI.md)
 * [Scope & Vision (niet af)](https://github.com/martijnmeeldijk/afstudeerproject/blob/master/docs/Scope%20%26%20Vision.md)
 
 ### Teamleden
