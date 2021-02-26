@@ -1,1 +1,0 @@
-kinderen/ mensen die wel dicht bij elkaar mogen zijn?
