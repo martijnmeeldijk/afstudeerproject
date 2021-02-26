@@ -1,4 +1,4 @@
-# Afstudeerproject
+# De te dicht-o-meter
 Staan we te dicht bij elkaar? Dat is de vraag.
 Dit project geeft alle antwoorden. Met het gebruik van AI en deep-learning technologie zullen we het mysterie oplossen. 
 Zie de volgende links voor meer info over de voortgang van ons project.
