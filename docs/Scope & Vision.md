@@ -144,9 +144,7 @@ CO-2: All python code shall conform to the python 3.0 standard.
 
 ## **4.1 User Interfaces (Tim)**
 
-
-
-No interfaces will be displayed because access to the system will be prohibited to unauthorized personnel. There will be documentation given as to how the AI can be used and should be used.
+A user interface is provided in the form of a webapp. Several kinds of important data will be shown such as the amount of violations and timestamps. A livestream may be part of this.
 
 ## **4.2** Software Interfaces
 
