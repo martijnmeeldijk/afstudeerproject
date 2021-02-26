@@ -351,7 +351,7 @@ Het model bijtrainen in tensorflow 2 is veel belovend want de loss zit rond 0.35
 
 Donderdag 25 feb en vrijdag 26 feb de hele tijd bezig geweest met het proberen omzetten van het model van tensorflow2 naar tensorflow1 maar deze pogingen waren uiteindelijk onsuccesvol. We gaan het hier moeten laten en onze bevindingen moeten delen met de klant dat het wel mogelijk is, maar niet in deze gelimiteerde tijd. Teveel errors en bugs in tensorflow die door het bedrijf zelf nog niet zijn opgelost.
 
-###### Meer info over de problemen hierover in: [Problemen bijtrainen AI](ProblemenMetBijtrainenVanAI.md):
+###### Meer info over de problemen hierover in: [Problemen bijtrainen AI](ProblemenMetBijtrainenVanAI.md)
 
 
 
