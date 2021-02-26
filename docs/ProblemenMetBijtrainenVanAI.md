@@ -1,3 +1,8 @@
+## Problemen met het bijtrainen van AI
+
+In dit document beschrijven we de problemen die we hebben ondervonden bij het trainen van het model dat instaat voor de persoonsherkenning in ons project. Hopelijk kan het nuttig zijn in de eventuele verdere ontwikkeling.
+
+
 ### Maandag 22 feb en Dinsdag 23 feb 
 Het bijtrainen van ai is al een moeilijke opgave omdat er vrij weinig duidelijke documentatie te vinden is. De weinige documentatie die te vinden is, is vaak ook te wiskundig of complex voor ons, omdat we nog maar net kennis hebben gemaakt met AI. 
 Code snippets hiervoor zijn overal te vinden maar weinig zijn goed gedocumenteerd, waardoor vaak niet duidelijk is wat de code exact doet. Tensorflow is een framework dat je helpt bij het trainen en bijtrainen van modellen en dit is ook wat we willen gebruiken voor ons model. Dus blijven we ook zoeken.
