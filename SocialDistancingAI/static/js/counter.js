@@ -8,6 +8,9 @@ jQuery(function ($) {
         $.get( "/get-violations", function( data ) {
             $("#violations").text(data);
           });
+        $.get( "/get-total-violations", function( data ) {
+          $("#total-violations").text(data);
+        });
     }
     
 });

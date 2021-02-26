@@ -15,12 +15,12 @@ function load_form(){
             form.append(
                 $(`
                 <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                 <div class="input-group mb-3">
                 <input type="text" class="form-control" value="${key}" disabled>
                 </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8">
                 <div class="input-group mb-3">
                 <input type="text" class="form-control" id="${key}" value="${entry}" >
                 <div class="input-group-append">

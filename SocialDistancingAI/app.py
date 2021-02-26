@@ -9,7 +9,9 @@ from main import VideoOutput
 
 
 
+
 app = Flask(__name__)
+video_output = VideoOutput()
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug = False)
@@ -41,6 +43,11 @@ def get_all_logs():
 @app.route("/get-violations")
 def get_violations():
     with open(f'logs/extra/violations', 'r') as f:
+        return f.read()
+
+@app.route("/get-total-violations")
+def get_total_violations():
+    with open(f'logs/extra/total_violations', 'r') as f:
         return f.read()
 
 @app.route("/get-people")
@@ -84,7 +91,8 @@ def gen(stream):
 
 @app.route('/video_feed')
 def video_feed():
-    return Response(gen(VideoOutput()),
+    global video_output
+    return Response(gen(video_output),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 

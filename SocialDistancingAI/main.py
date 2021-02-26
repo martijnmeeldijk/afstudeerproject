@@ -242,7 +242,7 @@ class VideoOutput:
         if (not self.frame_num/self.fps % int(self.log_interval)):
             self.logger.write_log_entry(date = datetime.now().strftime("%d/%m/%Y"), time = datetime.now().strftime("%H:%M:%S"), violations = str(int(self.delta_six_feet_violations)), people = self.total_pedestrians_detected)
             delta_six_feet_violations = 0
-            self.logger.write_live_counter(violations= int(delta_six_feet_violations) , people = self.total_pedestrians_detected)
+            self.logger.write_live_counter(violations= int(delta_six_feet_violations) , people = self.total_pedestrians_detected, total_violations = str(int(self.total_six_feet_violations)))
             
         ret, jpeg = cv2.imencode('.jpg', frame)
         return jpeg.tobytes()

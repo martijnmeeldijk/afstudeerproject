@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Hello, world!</title>
+  <title>De Te Dicht-O-Meter</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -12,6 +12,7 @@
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- Material Kit CSS -->
+  <link rel="icon" type="image/jpg" href="https://img.icons8.com/ios/50/000000/share-2--v1.png">
   <link href="static/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   {% block head %}{% endblock %}
@@ -28,7 +29,7 @@
   -->
       <div class="logo">
         <a href="" class="simple-text logo-mini">
-          UZ Leuven
+          <img src="../static/img/uz-logo.png" alt="UZ Leuven Banner" width="127" height="44">
         </a>
         <a href="" class="simple-text logo-normal">
           Covid-Dashboard
@@ -78,16 +79,6 @@
             <span class="navbar-toggler-icon icon-bar"></span>
             <span class="navbar-toggler-icon icon-bar"></span>
           </button>
-          <div class="collapse navbar-collapse justify-content-end">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:;">
-                  <i class="material-icons">notifications</i> Notifications
-                </a>
-              </li>
-              <!-- your navbar here -->
-            </ul>
-          </div>
         </div>
       </nav>
       <!-- End Navbar -->
@@ -133,7 +124,7 @@
 <script src="static/js/plugins/bootstrap-datetimepicker.min.js"></script>
 
 <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
-<script src="static/js/plugins/jquery.datatables.min.js"></script>
+<!-- <script src="static/js/plugins/jquery.datatables.min.js"></script> -->
 
 <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
 <script src="static/js/plugins/bootstrap-tagsinput.js"></script>
@@ -171,5 +162,6 @@
 
 {% block scripts %}
 {% endblock scripts %}
+<p hidden><a href="https://icons8.com/icon/58565/connect">Connect icon by Icons8</a></p> 
 
 </html>
