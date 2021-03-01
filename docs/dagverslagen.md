@@ -18,6 +18,8 @@
      * [Maandag 22 februari](#maandag-22-februari)
      * [Dinsdag 23 februari](#dinsdag-23-februari)
      * [Woensdag 24 februari](#woensdag-24-februari)
+     * [Donderdag 25 februari](#donderdag-25-februari)
+     * [Vrijdag 26 februari](#vrijdag-26-februari)
 
 
 
@@ -347,6 +349,8 @@ De webapp gedebugt, daar zaten we wel even aan vast
 ### Donderdag 25 februari
 
 We zijn bezig met het model bij te trainen met tensorflow 1. Toch gelukt om model bij te trainen met tensorflow 1 maar het uiteindelijke resultaat is heel slecht. Na vele uren komen we op een loss van 4.758 uit voor onze model terwijl een aangeraden loss 0.3 is (loss is een beschrijving van de nauwkeurigheid van het model in cijfers). Besloten om toch maar met het model getraint met tensorflow 2 te werken.
+
+
 
 ### Vrijdag 26 februari
 

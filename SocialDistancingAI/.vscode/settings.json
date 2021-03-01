@@ -1,5 +1,0 @@
-{
-    "python.pythonPath": "/usr/local/bin/python3",
-    "python.formatting.provider": "autopep8",
-    "git.ignoreLimitWarning": true
-}

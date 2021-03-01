@@ -100,6 +100,29 @@ De lectoren/begeleiders waren over het algemeen zeer tevreden over de vooruitgan
 
 Final touches aan de webapp doen, trainen van het model.
 
+
+##  Maandag 1 Maart
+
+### Verslag (korte) Vergadering 
+
+![img](img/clip_image001.jpg)
+
+| DATUM: | AANWEZIGEN:                                                  | **VERONTSCHULDIGD:** | VERSLAGGEVER: | DATUM VOLGENDE VERGADERING: | AGENDA:                  |
+| ------ | ------------------------------------------------------------ | -------------------- | ------------- | --------------------------- | ------------------------ |
+| 24/02  | Johan Strypsteen, Siegmund Leducq, David Vandenbroeck, Patrick De Mazière, Tim Vanherwegen, Robbe De Bie, Martijn Meeldijk, Louis Van de Perre,  | n/a                  | Robbe De Bie  | 01/03                       | Updaten over vooruitgang |
+
+
+
+**KORT VERSLAG**: 
+
+Korte vergadering waarin we de verdere vooruitgang hebben getoond. Louis en Tim hebben hun onderzoek naar het trainen van de AI vrijdag afgerond. Er waren wat bevindingen die we gedeeld hebben met de klant. We hebben ook een verdere uitgebreide UI laten zien waarvan het leek alsof iedereen wel tevreden was buiten wat zorgen over de veiligheid over een het streamen van een video over een lokaal network. Ze hadden ook een opmerking over de violations die gegeven werden op de site. Ze hadden liever dat deze de hoeveelheid mensen laat zien in het beeld op het moment + de hoeveelheid violations in totaal.
+
+De lectoren/begeleiders waren weer over het algemeen tevreden over het resultaat en zien dat we veel moeite doen. 
+
+
+**ACTIES**:
+
+UI aanpassen zodat de hoeveelheid mensen in beeld worden getoond + of er een violation van de 1.5m is op het moment. Documentatie uitschrijven voor het opzetten en gebruik van alle delen van het project.
   
 
  
