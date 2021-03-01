@@ -28,6 +28,8 @@ function toggle_unit(string) {
     create_chart();
 }
 
+const unit_map = {'minute': '5', 'ten-minutes': 4, 'hour': 3, 'day': 0}
+
 
 $('#log-dropdown').change(create_chart);
 
@@ -42,12 +44,22 @@ function create_chart() {
         if ($.trim(data)) {
             jsonfile = JSON.parse(data);
 
-            var labels = jsonfile.entries.map(function (e) {
-                return e.time;
-            });
-            var data = jsonfile.entries.map(function (e) {
-                return e.violations;
-            });
+            // var labels = jsonfile.entries.map(function (e) {
+            //     return e.time;
+            // });
+            // var data = jsonfile.entries.map(function (e) {
+            //     return e.violations;
+            // });
+
+            const grouping = _.groupBy(jsonfile.violations, element => element.time.substring(0, 5))
+            const sections = _.map(grouping, (items, date) => ({
+                date: date,
+                alerts: items.length
+            }));
+            console.log(sections);
+
+          
+
 
             var ctx = canvas.getContext('2d');
             var config = {
@@ -103,7 +115,7 @@ function create_chart() {
                 }
 
             };
-            if (typeof(chart) != "undefined") {
+            if (typeof (chart) != "undefined") {
                 chart.destroy();
             }
             chart = new Chart(ctx, config);
@@ -122,7 +134,7 @@ function create_chart() {
                     }]
                 }
             };
-            if (typeof(chart) != "undefined") {
+            if (typeof (chart) != "undefined") {
                 chart.destroy();
             }
             chart = new Chart(ctx, config);
