@@ -246,7 +246,7 @@ class VideoOutput:
         
 
 
-        self.logger.write_live_counter(violations= int(self.delta_six_feet_violations) , people = self.total_pedestrians_detected, total_violations = str(int(self.total_six_feet_violations)))
+        self.logger.write_live_counter(violations= int(self.delta_six_feet_violations) , people = num_pedestrians, total_violations = str(int(self.total_six_feet_violations)))
             
         ret, jpeg = cv2.imencode('.jpg', frame)
         return jpeg.tobytes()

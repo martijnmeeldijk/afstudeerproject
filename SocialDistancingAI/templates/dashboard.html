@@ -6,15 +6,19 @@
 <select style="width: 50vw;" class="form-select mb-3" id="log-dropdown" name="log"></select>
 <div style="width: 50vw;"><canvas id="canvas"></canvas></div>
 
-<p>Set time interval:</p>
+<p>Aggregate data per time interval:</p>
 <div class="row" style="width: 50vw;">
     <div class="col-sm-4">
         <button class="btn btn-primary btn-block toggle-unit btn-sm" onclick="toggle_unit('second')"
-            value="second">second</button>
+            value="second">Second</button>
     </div>
     <div class="col-sm-4">
         <button class="btn btn-primary btn-block toggle-unit btn-sm" onclick="toggle_unit('minute')"
             value="minute">minute</button>
+    </div>
+    <div class="col-sm-4">
+        <button class="btn btn-primary btn-block toggle-unit btn-sm" onclick="toggle_unit('ten-minutes')"
+            value="minute">ten minutes</button>
     </div>
     <div class="col-sm-4">
         <button class="btn btn-primary btn-block toggle-unit btn-sm" onclick="toggle_unit('hour')"

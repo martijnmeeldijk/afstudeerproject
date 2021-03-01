@@ -1,6 +1,6 @@
 var jsonfile = {};
 let dropdown = $('#log-dropdown');
-var unit = 'second';
+var unit = 'hour';
 var chart;
 const url = '/get-all-logs';
 
@@ -28,7 +28,12 @@ function toggle_unit(string) {
     create_chart();
 }
 
-const unit_map = {'minute': '5', 'ten-minutes': 4, 'hour': 3, 'day': 0}
+const unit_map = {
+    'second': {'substring': 8, 'parser': 'hh:mm:ss', 'unit': 'second', 'type': 'line'}, 
+    'minute': {'substring': 5, 'parser': 'hh:mm', 'unit': 'minute', 'type': 'line' }, 
+    'ten-minutes': {'substring': 4, 'parser': 'hh:mm', 'unit': 'minute', 'type': 'line'}, 
+    'hour': {'substring': 3, 'parser': 'hh', 'unit': 'hour', 'type': 'line'}, 
+    'day': {'substring': 0, 'parser': 'hh', 'unit': 'day', 'type': 'bar'}}
 
 
 $('#log-dropdown').change(create_chart);
@@ -51,24 +56,38 @@ function create_chart() {
             //     return e.violations;
             // });
 
-            const grouping = _.groupBy(jsonfile.violations, element => element.time.substring(0, 5))
-            const sections = _.map(grouping, (items, date) => ({
-                date: date,
-                alerts: items.length
-            }));
-            console.log(sections);
+            const grouping = _.groupBy(jsonfile.violations, element => element.time.substring(0, unit_map[unit].substring))
+            let sections
+            if(unit == 'ten-minutes'){
+                sections = _.map(grouping, (items, date) => ({
+                    date: date + '0',
+                    alerts: items.length
+                }));
+            }
+            else{
+                sections = _.map(grouping, (items, date) => ({
+                    date: date,
+                    alerts: items.length
+                }));
+            }
+            
 
-          
+            x_values = sections.map(x => x.date)
+            y_values = sections.map(x => x.alerts)
+
+            if(!x_values[0]) x_values[0] = 'total'
+            console.log(x_values)
+            console.log(y_values)
 
 
             var ctx = canvas.getContext('2d');
             var config = {
                 type: 'line',
                 data: {
-                    labels: labels,
+                    labels: x_values,
                     datasets: [{
                         label: 'Violations',
-                        data: data,
+                        data: y_values,
                         backgroundColor: 'rgba(0, 119, 204, 0.3)'
                     }]
                 },
@@ -80,8 +99,7 @@ function create_chart() {
                             time: {
                                 parser: 'hh:mm:ss',
                                 tooltipFormat: 'hh:mm:ss',
-                                unit: unit,
-                                unitStepSize: 1,
+                                unit: unit_map[unit].unit,
                                 displayFormats: {
                                     second: 'hh:mm:ss',
                                 }

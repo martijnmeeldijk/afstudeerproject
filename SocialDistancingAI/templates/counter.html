@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block head %}
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css">
+
   <style type="text/css">
     
 body {
@@ -50,13 +52,13 @@ body {
     <div class="counter col_fourth">
       <i class="fa fa-user fa-2x"></i>
       <h2 id="people"  class="timer count-title count-number" data-to="150" data-speed="1500"></h2>
-       <p  class="count-text">People</p>
+       <p  class="count-text">People in view</p>
     </div>
 
     <div class="counter col_fourth">
-      <i class="fa fa-exclamation-triangle fa-2x"></i>
+      <i id="violations-triangle" class="fas fa-tachometer-slowest fa-4x"></i>
       <h2 id="violations"  class="timer count-title count-number" data-to="0" data-speed="1500"></h2>
-      <p  class="count-text">Violations</p>
+      <p  class="count-text">Te dicht-o-meter</p>
     </div>
 
     <div class="counter col_fourth">
