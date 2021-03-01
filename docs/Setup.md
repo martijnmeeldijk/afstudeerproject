@@ -9,4 +9,6 @@
 - Run het project met deze command "sudo flask run"(Als je problemen hebt met flask probeer dit dan is opnieuw handmatig te installeren door "sudo pip install Flask" of "sudo -H python3.7 -m pip install Flask
 "te runnen)
 
+## Veranderen van email adres en custom message voor het sturen van violation mail
+- Begin in de root
 
