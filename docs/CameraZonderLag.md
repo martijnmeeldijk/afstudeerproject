@@ -1,4 +1,4 @@
-# De Lag op de Camera verminderen
+# De lag op de Camera verminderen
 
 ## Waarom was er grote latency?
 
