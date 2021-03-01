@@ -219,6 +219,11 @@ class VideoOutput:
                 self.total_pedestrians_detected, self.frame_num, self.fps
             )
 
+            if(self.delta_six_feet_violations >= 1):
+                for i in range(int(self.delta_six_feet_violations)):
+                    self.logger.write_violation(date = datetime.now().strftime("%d/%m/%Y"), time = datetime.now().strftime("%H:%M:%S"))
+                self.delta_six_feet_violations = 0
+
         last_h = 75
         text = "Violations: " + str(int(self.total_six_feet_violations))
         pedestrian_detect, last_h = put_text(pedestrian_detect, text, text_offset_y=last_h)
@@ -238,11 +243,10 @@ class VideoOutput:
         # bird_movie.write(bird_image)
 
 
+        
 
-        if (not self.frame_num/self.fps % int(self.log_interval)):
-            self.logger.write_log_entry(date = datetime.now().strftime("%d/%m/%Y"), time = datetime.now().strftime("%H:%M:%S"), violations = str(int(self.delta_six_feet_violations)), people = self.total_pedestrians_detected)
-            delta_six_feet_violations = 0
-            self.logger.write_live_counter(violations= int(delta_six_feet_violations) , people = self.total_pedestrians_detected, total_violations = str(int(self.total_six_feet_violations)))
+
+        self.logger.write_live_counter(violations= int(self.delta_six_feet_violations) , people = num_pedestrians, total_violations = str(int(self.total_six_feet_violations)))
             
         ret, jpeg = cv2.imencode('.jpg', frame)
         return jpeg.tobytes()

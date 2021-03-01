@@ -10,6 +10,7 @@ class Logger:
         self.live_total_violations = filename + "/extra/total_violations"
 
 
+    # Deprecated
     def write_log_entry(self, date = 0, time = 0, violations = 0, people = 0):
         data = {
                 "date": date,
@@ -43,6 +44,31 @@ class Logger:
             f.write(str(violations))
         with open(self.live_total_violations, 'w') as f:
             f.write(str(total_violations))
+
+    def write_violation(self, date = 0, time = 0):
+        data = {
+                "date": date,
+                "time": time
+            } 
+
+            
+        print(f"trying to put {data} in {self.filename}")
+
+        if not os.path.exists(self.filename):
+            with open(self.filename, 'a+') as f:
+                json.dump({"violations": []}, f)
+
+        if os.path.exists(self.filename) and os.path.getsize(self.filename) == 0:
+            with open(self.filename, 'w') as f:
+                json.dump({"violations": []}, f)
+
+        with open(self.filename, 'r') as f:
+            contents = json.load(f)
+
+        with open(self.filename, 'w') as f:
+            contents['violations'].append(data) 
+            json.dump(contents, f)
+
 
 
 
