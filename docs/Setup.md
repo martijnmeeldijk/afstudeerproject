@@ -1,12 +1,12 @@
 # Setup om het project op te zetten
 
 ## Steps
-- clone de repo
-- cd naar SocialDistancingAI
-- python 3.7 is aangeraden
-- pip install -r xrequirements.txt (als je met specifieke python versie wilt "python3.x -m pip install -r xrequirements.txt"). Zou je problemen hebben met tensorflow of andere dependencies kan het helpen om [deze guide](https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html) van nvdia te volgen.
+- Clone de repo
+- Cd naar SocialDistancingAI
+- Python 3.7 is aangeraden
+- Pip install -r xrequirements.txt (als je met specifieke python versie wilt "python3.x -m pip install -r xrequirements.txt"). Zou je problemen hebben met tensorflow of andere dependencies kan het helpen om [deze guide](https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html) van nvdia te volgen.
 - Normaal is alles nu mooi geïnstalleerd
-- run het project met deze command "sudo flask run"(Als je problemen hebt met flask probeer dit dan is opnieuw handmatig te installeren door "sudo pip install Flask" of "sudo -H python3.7 -m pip install Flask
+- Run het project met deze command "sudo flask run"(Als je problemen hebt met flask probeer dit dan is opnieuw handmatig te installeren door "sudo pip install Flask" of "sudo -H python3.7 -m pip install Flask
 "te runnen)
 
 
