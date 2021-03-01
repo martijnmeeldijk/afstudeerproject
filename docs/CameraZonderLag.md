@@ -5,7 +5,7 @@
 Het programma wilt elke frame dat binnenkomt tonen en dan verwerken, het probleem hiermee is dat de verwerking te lang duurt op het bordje.
 Hiedoor was de volgende frame steeds later en later zijn doordat het programma de frames die in de buffer zaten nam.
 
-###wat was de oplossing hiervoor?
+### wat was de oplossing hiervoor?
 
 ik heb een paar uur gezocht naar hoe ik de buffer weg kreeg maar dit kon ik nergens vinden waarbij het dan ook werkte.
 Uiteindelijk een Klasse VideoCapture gemaakt, deze maakt gebruik van de cv2.VideoCapture
