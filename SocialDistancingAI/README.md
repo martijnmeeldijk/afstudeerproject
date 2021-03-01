@@ -11,7 +11,7 @@ git clone https://github.com/aqeelanwar/SocialDistancingAI.git
 
 ## Install required packages
 Python 3.7 is aangeraden voor dit project, andere python versies kunnen voor problemen zorgen met de dependencies
-De gegeven xrequirements.txt file kan gebruikt worden om alles te installeren met deze command.
+De gegeven xrequirements.txt file kan gebruikt worden om alles te installeren met deze command. LET OP, het is xrequirements niet requirements
 ```
 cd SocialDistancingAI
 pip install -r xrequirements.txt
