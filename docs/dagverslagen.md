@@ -350,15 +350,31 @@ De webapp gedebugt, daar zaten we wel even aan vast
 
 We zijn bezig met het model bij te trainen met tensorflow 1. Toch gelukt om model bij te trainen met tensorflow 1 maar het uiteindelijke resultaat is heel slecht. Na vele uren komen we op een loss van 4.758 uit voor onze model terwijl een aangeraden loss 0.3 is (loss is een beschrijving van de nauwkeurigheid van het model in cijfers). Besloten om toch maar met het model getraint met tensorflow 2 te werken.
 
+Gewerkt aan integratie van de webapp en het AI project
+
 
 
 ### Vrijdag 26 februari
 
-Donderdag 25 feb en vrijdag 26 feb de hele tijd bezig geweest met het proberen omzetten van het model van tensorflow2 naar tensorflow1 maar deze pogingen waren uiteindelijk onsuccesvol. We gaan het hier moeten laten en onze bevindingen moeten delen met de klant dat het wel mogelijk is, maar niet in deze gelimiteerde tijd. Teveel errors en bugs in tensorflow die door het bedrijf zelf nog niet zijn opgelost.
+De hele tijd bezig geweest met het proberen omzetten van het model van tensorflow2 naar tensorflow1 maar deze pogingen waren uiteindelijk onsuccesvol. We gaan het hier moeten laten en onze bevindingen moeten delen met de klant dat het wel mogelijk is, maar niet in deze gelimiteerde tijd. Teveel errors en bugs in tensorflow die door het bedrijf zelf nog niet zijn opgelost.
+
+Verderzetten van de integratie van het project en de webapp. Creatie van startup config zodat de opstart van het gehele project met 1 command kan.  
 
 ###### Meer info over de problemen hierover in: [Problemen bijtrainen AI](ProblemenMetBijtrainenVanAI.md)
 
+### Maandag 1 maart
 
+Na de vergadering met de klant hadden ze gevraagd voor een verandering van informatie die gegeven wordt in de webapp. In de onderstaand images kan je ziet wat we hadden en wat ze wilden.
+
+Before:
+
+<img src="https://github.com/martijnmeeldijk/afstudeerproject/blob/master/docs/img/Screenshot%20from%202021-03-01%2016-18-29.png"/>
+
+After:
+
+<img src="https://github.com/martijnmeeldijk/afstudeerproject/blob/master/docs/img/156170343_1318109225224515_6135300971342547283_n.png"/>
+
+Martijn en Robbe hebben zich daarmee bezighouden. Tim werkte aan documentatie en verdere uitbreidingen van handige informatie voor de klant. Louis werkte nog aan een extensions voor het project dat er bij een violation een mail gestuurd wordt.
 
 
 
