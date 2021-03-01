@@ -11,11 +11,11 @@ jQuery(function ($) {
         $.get( "/get-total-violations", function( data ) {
           if(data != total_violations){
             total_violations = data
-            $("#violations-triangle").css('color', 'red');
+            $("#violations-triangle").css('color', '#F83812');
             $("#violations-triangle").removeClass('fa-tachometer-alt-slowest').addClass('fa-tachometer-alt-fastest')
           }
           else{
-            $("#violations-triangle").css('color', 'green');
+            $("#violations-triangle").css('color', '#91CB3E');
             $("#violations-triangle").removeClass('fa-tachometer-alt-fastest').addClass('fa-tachometer-alt-slowest')
           }
 
