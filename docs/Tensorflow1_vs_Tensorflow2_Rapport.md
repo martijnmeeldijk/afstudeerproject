@@ -1,6 +1,6 @@
 # Tensorflow 1 vs Tensorflow 2
 
-Door aanvraag van de klant hebben we hier een klein rapport uitgeschreven voor het verschil tussen tensorflow 1 en tensorflow 2. Het is aangeraden is om heel vroeg de beslissing te maken of je met TF 1 of TF 2 gaat werken. 
+Op aanvraag van de klant hebben we hier een klein rapport uitgeschreven voor het verschil tussen tensorflow 1 en tensorflow 2. Het is aangeraden om heel vroeg de beslissing te maken of je met TF 1 of TF 2 gaat werken. 
 
 ## Tensorflow 1
 Het voordeel van TF 1 was dat het heel veelzijdig was waardoor het dus erg geliefd was onder de gebruikers. Het heeft echt een groot nadeel: het is erg moeilijk te leren en te gebruiken. Omwille van deze reden zijn er tussen veel high level packages gemaakt die het werken met TF 1 vergemakkelijkte zoals "Keras" en "Pytorch". In TF 1 moeten we voor het bouwen van een model eerst placeholders declareren. Dit waren de dummy-variabelen die later (in de sessie) zullen worden gebruikt om gegevens aan het model te voeden. Er waren veel ingebouwde API's voor het bouwen van de lagen zoals tf.contrib, tf.layers en tf.keras.
