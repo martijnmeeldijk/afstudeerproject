@@ -13,6 +13,9 @@ Zie de volgende links voor meer info over de voortgang van ons project.
 * [Klantvergaderingen](https://github.com/martijnmeeldijk/afstudeerproject/blob/master/docs/klantvergaderingen.md)
 * [Problemen bij het trainen van AI](https://github.com/martijnmeeldijk/afstudeerproject/blob/master/docs/ProblemenMetBijtrainenVanAI.md)
 * [Scope & Vision (niet af)](https://github.com/martijnmeeldijk/afstudeerproject/blob/master/docs/Scope%20%26%20Vision.md)
+* [Setup voor het project](https://github.com/martijnmeeldijk/afstudeerproject/blob/master/docs/Setup.md)
+* [Tensorflow 1 vs Tensorflow 2](https://github.com/martijnmeeldijk/afstudeerproject/blob/master/docs/Tensorflow1_vs_Tensorflow2_Rapport.md)
+* [Tips voor inputlag te reduceren bij het gebruik van een camera](https://github.com/martijnmeeldijk/afstudeerproject/blob/master/docs/CameraZonderLag.md)
 
 ### Tag
 
