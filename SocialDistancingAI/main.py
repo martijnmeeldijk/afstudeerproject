@@ -129,12 +129,12 @@ class VideoOutput:
             #print(mouse_pts)
 
 
-  
+   
 
 
     # Process each frame, until end of video
     def get_frame(self):
-        mailer = Mailer()
+        
         self.frame_num += 1
         if (self.config['USER']['is_video'] == "yes"):
             ret, frame = self.cap.read()
@@ -233,14 +233,15 @@ class VideoOutput:
         last_h = 75
         text = "Violations: " + str(int(self.total_six_feet_violations))
         pedestrian_detect, last_h = put_text(pedestrian_detect, text, text_offset_y=last_h)
-
+        
         if(time.gmtime()[4] -self.pastTime == 1):
             self.pastTime = time.gmtime()[4]
             print("checking is Threshold has been met") 
             print(self.mail_six_feet_violations)
             if(self.mail_six_feet_violations >= float(self.config['USER']['threshold_mail'])):
                 print("Threshold met sending mail")
-                mailer.send()
+                mail_thread = threading.Thread(target=send_mail)
+                mail_thread.start()
             self.mail_six_feet_violations = 0
         
         # text = "Stay-at-home Index: " + str(np.round(100 * sh_index, 1)) + "%"
@@ -266,3 +267,7 @@ class VideoOutput:
         ret, jpeg = cv2.imencode('.jpg', frame)
         return jpeg.tobytes()
 
+def send_mail():
+    print("sending mail")
+    mailer = Mailer()
+    mailer.send()
