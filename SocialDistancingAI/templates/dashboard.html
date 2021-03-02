@@ -3,7 +3,15 @@
 {% block content %}
 
 <p>Select a log file to plot:</p>
-<select style="width: 50vw;" class="form-select mb-3" id="log-dropdown" name="log"></select>
+
+
+<div style="width: 50vw;" class="input-group mb-3">
+    <select  class="custom-select" id="log-dropdown" name="log"></select>    
+    <div class="input-group-append">
+      <button style="margin: 0 !important" class="btn btn-outline-secondary" id="refresh-button" type="button"><i class="fa fa-refresh" id="refresh"></i></button>
+    </div>
+  </div>
+
 <div style="width: 50vw;"><canvas id="canvas"></canvas></div>
 
 <p>Aggregate data per time interval:</p>
@@ -25,6 +33,9 @@
             value="hour">hour</button>
     </div>
 </div>
+
+
+<img id="bg" src="{{ url_for('video_feed') }}" hidden>
 
 {% endblock %}
 

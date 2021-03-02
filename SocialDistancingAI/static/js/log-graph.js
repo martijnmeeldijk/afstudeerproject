@@ -18,7 +18,15 @@ $(document).ready(function () {
         dropdown.prop('selectedIndex', 1);
         create_chart();
     });
+
 });
+
+$('#refresh-button').on('click', ()=>{
+    create_chart()
+    $('#refresh').addClass("fa-spin")
+    setTimeout(function() { $('#refresh').removeClass('fa-spin'); }, 1000);
+
+})
 
 
 
