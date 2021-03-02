@@ -3,6 +3,7 @@ let dropdown = $('#log-dropdown');
 var unit = 'hour';
 var chart;
 const url = '/get-all-logs';
+var type = 'violations'
 
 $(document).ready(function () {
     dropdown.empty();
@@ -16,15 +17,19 @@ $(document).ready(function () {
             dropdown.append($('<option></option>').attr('value', entry).text(entry));
         });
         dropdown.prop('selectedIndex', 1);
-        create_chart();
+        create_chart(type);
     });
+
+    $('#type-people').on('click', () => {type = 'people'; create_chart(); console.log('set to people')})
+    $('#type-violations').on('click', () => {type = 'violations'; create_chart();})
+
 
 });
 
-$('#refresh-button').on('click', ()=>{
+$('#refresh-button').on('click', () => {
     create_chart()
     $('#refresh').addClass("fa-spin")
-    setTimeout(function() { $('#refresh').removeClass('fa-spin'); }, 1000);
+    setTimeout(function () { $('#refresh').removeClass('fa-spin'); }, 1000);
 
 })
 
@@ -33,15 +38,20 @@ $('#refresh-button').on('click', ()=>{
 
 function toggle_unit(string) {
     unit = string;
-    create_chart();
+    create_chart(type);
+}
+
+function toggle_type(string){
+    type = string
 }
 
 const unit_map = {
-    'second': {'substring': 8, 'parser': 'hh:mm:ss', 'unit': 'second', 'type': 'line'}, 
-    'minute': {'substring': 5, 'parser': 'hh:mm', 'unit': 'minute', 'type': 'line' }, 
-    'ten-minutes': {'substring': 4, 'parser': 'hh:mm', 'unit': 'minute', 'type': 'line'}, 
-    'hour': {'substring': 3, 'parser': 'hh', 'unit': 'hour', 'type': 'line'}, 
-    'day': {'substring': 0, 'parser': 'hh', 'unit': 'day', 'type': 'bar'}}
+    'second': { 'substring': 8, 'parser': 'hh:mm:ss', 'unit': 'second', 'type': 'line' },
+    'minute': { 'substring': 5, 'parser': 'hh:mm', 'unit': 'minute', 'type': 'line' },
+    'ten-minutes': { 'substring': 4, 'parser': 'hh:mm', 'unit': 'minute', 'type': 'line' },
+    'hour': { 'substring': 3, 'parser': 'hh', 'unit': 'hour', 'type': 'line' },
+    'day': { 'substring': 0, 'parser': 'hh', 'unit': 'day', 'type': 'bar' }
+}
 
 
 $('#log-dropdown').change(create_chart);
@@ -64,28 +74,59 @@ function create_chart() {
             //     return e.violations;
             // });
 
-            const grouping = _.groupBy(jsonfile.violations, element => element.time.substring(0, unit_map[unit].substring))
-            let sections
-            if(unit == 'ten-minutes'){
-                sections = _.map(grouping, (items, date) => ({
-                    date: date + '0',
-                    alerts: items.length
-                }));
+            if(type == 'violations')
+            {
+                const grouping = _.groupBy(jsonfile.violations, element => element.time.substring(0, unit_map[unit].substring))
+                let sections
+                if (unit == 'ten-minutes') {
+                    sections = _.map(grouping, (items, date) => ({
+                        date: date + '0',
+                        alerts: items.length
+                    }));
+                }
+                else {
+                    sections = _.map(grouping, (items, date) => ({
+                        date: date,
+                        alerts: items.length
+                    }));
+                }
+    
+    
+                x_values = sections.map(x => x.date)
+                y_values = sections.map(x => x.alerts)
+    
+                if (!x_values[0]) x_values[0] = 'total'
             }
             else{
-                sections = _.map(grouping, (items, date) => ({
-                    date: date,
-                    alerts: items.length
-                }));
+                const grouping = _.groupBy(jsonfile.violations, element => element.time.substring(0, unit_map[unit].substring))
+                let sections
+                if (unit == 'ten-minutes') {
+                    sections = _.map(grouping, (items, date) => ({
+                        date: date + '0',
+                        alerts: _.reduce(items, function(total, o) { 
+                            return total + o.people;
+                        }, 0)  
+                    }));
+                }
+                else {
+                    sections = _.map(grouping, (items, date) => ({
+                        date: date,
+                        alerts: _.reduce(items, function(total, o) { 
+                            return total + o.people;
+                        }, 0)  
+                    }));
+                }
+    
+    
+                x_values = sections.map(x => x.date)
+                console.log(y_values)
+                y_values = sections.map(x => x.alerts)
+    
+
             }
-            
 
-            x_values = sections.map(x => x.date)
-            y_values = sections.map(x => x.alerts)
-
-            if(!x_values[0]) x_values[0] = 'total'
-            console.log(x_values)
-            console.log(y_values)
+          
+           
 
 
             var ctx = canvas.getContext('2d');
@@ -94,7 +135,7 @@ function create_chart() {
                 data: {
                     labels: x_values,
                     datasets: [{
-                        label: 'Violations',
+                        label: type,
                         data: y_values,
                         backgroundColor: 'rgba(0, 119, 204, 0.3)'
                     }]

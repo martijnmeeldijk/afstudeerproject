@@ -45,10 +45,11 @@ class Logger:
         with open(self.live_total_violations, 'w') as f:
             f.write(str(total_violations))
 
-    def write_violation(self, date = 0, time = 0):
+    def write_violation(self, date = 0, time = 0, people = 0):
         data = {
                 "date": date,
-                "time": time
+                "time": time,
+                "people": people
             } 
 
             

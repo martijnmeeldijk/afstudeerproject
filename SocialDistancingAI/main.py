@@ -61,10 +61,7 @@ class VideoOutput:
         else:
             input_video = self.config['DEFAULT']['videopath']
 
-        if self.config['USER']['log_interval']:
-            self.log_interval = self.config['USER']['log_interval']
-        else:
-            self.log_interval = self.config['DEFAULT']['log_interval']
+       
 
         # Define a DNN (deepl neural network) model
         self.DNN = model()
@@ -227,7 +224,7 @@ class VideoOutput:
 
             if(self.delta_six_feet_violations >= 1):
                 for i in range(int(self.delta_six_feet_violations)):
-                    self.logger.write_violation(date = datetime.now().strftime("%d/%m/%Y"), time = datetime.now().strftime("%H:%M:%S"))
+                    self.logger.write_violation(date = datetime.now().strftime("%d/%m/%Y"), time = datetime.now().strftime("%H:%M:%S"), people = num_pedestrians)
                 self.delta_six_feet_violations = 0
 
         last_h = 75
