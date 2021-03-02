@@ -1,5 +1,8 @@
 # SocialDistancingAI
 
+# Prerequisites
+* Nvidia jetson board of een ARM board (Wij gebruikte Nvidia jetson xavier, andere bordjes zijn nog niet getest)
+* Jetson ubuntu installed
 
 # Hoe installeer ik het?
 Je kan best een [virtual environment](https://towardsdatascience.com/setting-up-python-platform-for-machine-learning-projects-cfd85682c54b) maken voor dit project en de dependencies installeren. 
