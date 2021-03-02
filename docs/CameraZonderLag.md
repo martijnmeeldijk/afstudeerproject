@@ -12,3 +12,5 @@ Uiteindelijk een Klasse VideoCapture gemaakt, deze maakt gebruik van de cv2.Vide
 maar gaat als de volgende frame opgevraagd wordt zal hij de frame die net is aangekomen geven.
 Op deze manier maakt hij niet gebruik van de Buffer en is de lag met zeer grote maten verminderd.
 Het enige waar de lag van de camera nu van afhangt is hoe snel het bordje 1 frame kan verwerken.
+
+zorgen dat de software niet vast zit moet je ervoor zorgen dat als er zwaar process moet gebeuren in het verwerken van de frames  dat je deze doet met multithreading zodat het programma (zoals gedaan bij de mails versturen als de threshold bereikt is) niet vast gaat lopen op 1 frame.
