@@ -31,13 +31,13 @@
 
 **Voormiddag**: 
 
-tutorials gekeken over nvidia jetson
+Tutorials gekeken over nvidia jetson
 
 
 
 **Middag**: 
 
-gebeld met meneer Geens en Swennen, wat duidelijkheid over het project
+Gebeld met meneer Geens en Swennen, wat duidelijkheid over het project
 
 We moeten in afwachting van de camera's wat opzoekwerk doen en leren hoe we een reverse proxy opzetten om aan de camerabeelden te kunnen.
 
@@ -125,11 +125,11 @@ https://developer.nvidia.com/embedded/community/jetson-projects
 
 **Ochtend**
 
-Samen deels de Scope & Vision ingevuld (moet nog afgemaakt worden)
+Samen deels de Scope & Vision ingevuld (moet nog afgemaakt worden).
 
 **Middag**
 
-Naar ucll gegaan om de bordjes en cameras te halen
+Naar ucll gegaan om de bordjes en cameras te halen.
 
 **Namiddag**
 
@@ -163,11 +163,11 @@ https://towardsdatascience.com/analyse-a-soccer-game-using-tensorflow-object-det
 
 **Ochtend**
 
-Sdk manager proberen te flashen, duurde heel lang
+Sdk manager proberen te flashen (met een vm), duurde heel lang
 
 **Middag**
 
-Martijn en robbe naar campus om proxy op te stellen
+Martijn en Robbe naar campus om proxy op te stellen, hebben server meegekregen.
 
 Tim & Louis geprutst aan jetson
 
@@ -189,7 +189,7 @@ meeting met geens, heeft ons tips gegeven
 
 **middag**
 
-besturingssysteem opnieuw geflasht met Nvidia jetpack in de hoop dat tensorflow zou werken
+Besturingssysteem opnieuw geflasht (met NVidia SDKManager op de server, dit ging al veel beter dan op een VM), in de hoop dat tensorflow zou werken
 
 **avond**
 
@@ -279,7 +279,7 @@ ai model training software zoeken
 
 In text file 
 
-Statistieken met js
+Research naar statistieken met js, hebben veel docs gelezen van Chart JS
 
 
 
@@ -291,17 +291,15 @@ Het is in de avond eindelijk gelukt
 
 
 
-
-
 ### Vrijdag 19 februari
 
 **Ochtend**
 
-Alles is weer kapot, ineens werkte het weer toen we moet de klant moesten bellen
+Alles is weer kapot, ineens werkte het weer tijdens een call met de klant.
 
  **Middag**
 
-De groep splitst op, martijn en robbe werken aan een systeem om te loggen en data te dumpen
+De groep splitst op, Martijn en Robbe werken aan een systeem om te loggen en data te dumpen
 
 Tim en Louis proberen een manier te zoeken om het model bij te trainen en/of andere modellen uit te proberen
 
@@ -311,11 +309,9 @@ Tim en Louis proberen een manier te zoeken om het model bij te trainen en/of and
 
 ### Maandag 22 februari
 
-Martijn en robbe werken verder aan een logging systeem, het is nu al uitgegroeid tot een volledige webapp met statistieken en coole grafieken
+Martijn en Robbe werken verder aan een logging systeem, het is nu al uitgegroeid tot een volledige webapp met statistieken en coole grafieken.
 
-
-
-Bezig geweest met een model om te zetten naar een frozen graph zodat het efficienter is om in gebruik te nemen. 
+Tim bezig geweest met een model om te zetten naar een frozen graph zodat het efficienter is om in gebruik te nemen. 
 
 Louis zocht op hoe je modellen moet bijtrainen, is heel moeilijk
 
@@ -327,13 +323,13 @@ Louis: het is moeilijk om een model bij te trainen op windows
 
 Tim: Verder zetten van het proberen van een model bij te trainen. Een oplossing gevonden die zeer belovend was. Werkende training van model is met tensorflow 2 maar onze applicatie werkt met tensorflow 1 wat voor problemen zorgt.
 
-Geens heeft niet super veel opmerkingen
+Hadden meeting met mr. Geens, we hebben hem onze voortgang getoond.
 
-We hebben hem onze voortgang getoond 
+Enkele opmerkingen van mr. Geens: 
 
-programma misschien runnen in gpu mode
+​	programma misschien runnen in gpu mode
 
-belasting van gpu enzo checken in jetson
+​	belasting van gpu enzo checken in jetson
 
 
 
@@ -342,7 +338,7 @@ belasting van gpu enzo checken in jetson
 
 Het model bijtrainen in tensorflow 2 is veel belovend want de loss zit rond 0.35. Het omzetten van het model van tensorflow2 naar tensorflow1 gaat wel zorgen voor moeilijkheden.
 
-We breiden de webapp uit om de configuratie in de app te doen, zodat er geen files moeten aangepast worden
+We breiden de webapp uit om de configuratie in de webapp te doen, zodat er geen files moeten aangepast worden
 
 De webapp gedebugt, daar zaten we wel even aan vast
 
@@ -350,15 +346,35 @@ De webapp gedebugt, daar zaten we wel even aan vast
 
 We zijn bezig met het model bij te trainen met tensorflow 1. Toch gelukt om model bij te trainen met tensorflow 1 maar het uiteindelijke resultaat is heel slecht. Na vele uren komen we op een loss van 4.758 uit voor onze model terwijl een aangeraden loss 0.3 is (loss is een beschrijving van de nauwkeurigheid van het model in cijfers). Besloten om toch maar met het model getraint met tensorflow 2 te werken.
 
+Gewerkt aan integratie van de webapp en het AI project
+
 
 
 ### Vrijdag 26 februari
 
-Donderdag 25 feb en vrijdag 26 feb de hele tijd bezig geweest met het proberen omzetten van het model van tensorflow2 naar tensorflow1 maar deze pogingen waren uiteindelijk onsuccesvol. We gaan het hier moeten laten en onze bevindingen moeten delen met de klant dat het wel mogelijk is, maar niet in deze gelimiteerde tijd. Teveel errors en bugs in tensorflow die door het bedrijf zelf nog niet zijn opgelost.
+De hele tijd bezig geweest met het proberen omzetten van het model van tensorflow2 naar tensorflow1 maar deze pogingen waren uiteindelijk onsuccesvol. We gaan het hier moeten laten en onze bevindingen moeten delen met de klant dat het wel mogelijk is, maar niet in deze gelimiteerde tijd. Teveel errors en bugs in tensorflow die door het bedrijf zelf nog niet zijn opgelost.
+
+Verderzetten van de integratie van het project en de webapp. Creatie van startup config zodat de opstart van het gehele project met 1 command kan.  
 
 ###### Meer info over de problemen hierover in: [Problemen bijtrainen AI](ProblemenMetBijtrainenVanAI.md)
 
+### Maandag 1 maart
 
+Na de vergadering met de klant hadden ze gevraagd voor een verandering van informatie die gegeven wordt in de webapp. In de onderstaand images kan je ziet wat we hadden en wat ze wilden.
+
+Before:
+
+<img src="img/Screenshot%20from%202021-03-01%2016-18-29.png"/>
+
+After:
+
+<img src="img/156170343_1318109225224515_6135300971342547283_n.png"/>
+
+Martijn en Robbe hebben zich daarmee bezighouden. Tim werkte aan documentatie en verdere uitbreidingen van handige informatie voor de klant. Louis werkte nog aan een extensions voor het project dat er bij een violation een mail gestuurd wordt.
+
+De logs zijn nu ook event based. Elke violation wordt nu weggeschreven naar de log ipv met een log_interval parameter te werken, die om de x frames het aantal violations wegschreef, ook dit was nog een verzoek van de klant.
+
+![image-20210305110533535](img/dagverslagen/image-20210305110533535.png)
 
 
 

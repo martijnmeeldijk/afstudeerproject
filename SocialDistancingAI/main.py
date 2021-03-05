@@ -10,6 +10,8 @@ from aux_functions import *
 import configparser
 from logger import Logger
 from datetime import datetime
+from mailer import Mailer
+
 
 
 class VideoCapture:
@@ -59,10 +61,7 @@ class VideoOutput:
         else:
             input_video = self.config['DEFAULT']['videopath']
 
-        if self.config['USER']['log_interval']:
-            self.log_interval = self.config['USER']['log_interval']
-        else:
-            self.log_interval = self.config['DEFAULT']['log_interval']
+       
 
         # Define a DNN (deepl neural network) model
         self.DNN = model()
@@ -91,9 +90,11 @@ class VideoOutput:
 
         # Initialize necessary variables
         self.frame_num = 0
+        self.pastTime = time.gmtime()[4]
         self.total_pedestrians_detected = 0
         self.total_six_feet_violations = 0
         self.delta_six_feet_violations = 0
+        self.mail_six_feet_violations = 0
         self.total_pairs = 0
         self.abs_six_feet_violations = 0
         self.pedestrian_per_sec = 0
@@ -125,11 +126,12 @@ class VideoOutput:
             #print(mouse_pts)
 
 
-  
+   
 
 
     # Process each frame, until end of video
     def get_frame(self):
+        
         self.frame_num += 1
         if (self.config['USER']['is_video'] == "yes"):
             ret, frame = self.cap.read()
@@ -214,15 +216,31 @@ class VideoOutput:
 
             self.total_six_feet_violations += six_feet_violations / self.fps
             self.delta_six_feet_violations += six_feet_violations / self.fps
+            self.mail_six_feet_violations += six_feet_violations / self.fps
             self.abs_six_feet_violations += six_feet_violations
             pedestrian_per_sec, sh_index = calculate_stay_at_home_index(
                 self.total_pedestrians_detected, self.frame_num, self.fps
             )
 
+            if(self.delta_six_feet_violations >= 1):
+                for i in range(int(self.delta_six_feet_violations)):
+                    self.logger.write_violation(date = datetime.now().strftime("%d/%m/%Y"), time = datetime.now().strftime("%H:%M:%S"), people = num_pedestrians)
+                self.delta_six_feet_violations = 0
+
         last_h = 75
         text = "Violations: " + str(int(self.total_six_feet_violations))
         pedestrian_detect, last_h = put_text(pedestrian_detect, text, text_offset_y=last_h)
-
+        
+        if(time.gmtime()[4] -self.pastTime == 1):
+            self.pastTime = time.gmtime()[4]
+            print("checking is Threshold has been met") 
+            print(self.mail_six_feet_violations)
+            if(self.mail_six_feet_violations >= float(self.config['USER']['threshold_mail'])):
+                print("Threshold met sending mail")
+                mail_thread = threading.Thread(target=send_mail)
+                mail_thread.start()
+            self.mail_six_feet_violations = 0
+        
         # text = "Stay-at-home Index: " + str(np.round(100 * sh_index, 1)) + "%"
         # pedestrian_detect, last_h = put_text(pedestrian_detect, text, text_offset_y=last_h)
 
@@ -238,12 +256,15 @@ class VideoOutput:
         # bird_movie.write(bird_image)
 
 
+        
 
-        if (not self.frame_num/self.fps % int(self.log_interval)):
-            self.logger.write_log_entry(date = datetime.now().strftime("%d/%m/%Y"), time = datetime.now().strftime("%H:%M:%S"), violations = str(int(self.delta_six_feet_violations)), people = self.total_pedestrians_detected)
-            delta_six_feet_violations = 0
-            self.logger.write_live_counter(violations= int(delta_six_feet_violations) , people = self.total_pedestrians_detected, total_violations = str(int(self.total_six_feet_violations)))
+
+        self.logger.write_live_counter(violations= int(self.delta_six_feet_violations) , people = num_pedestrians, total_violations = str(int(self.total_six_feet_violations)))
             
         ret, jpeg = cv2.imencode('.jpg', frame)
         return jpeg.tobytes()
 
+def send_mail():
+    print("sending mail")
+    mailer = Mailer()
+    mailer.send()

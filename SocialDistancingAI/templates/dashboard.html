@@ -3,18 +3,38 @@
 {% block content %}
 
 <p>Select a log file to plot:</p>
-<select style="width: 50vw;" class="form-select mb-3" id="log-dropdown" name="log"></select>
+
+
+<div style="width: 50vw;" class="input-group mb-3">
+    <select class="custom-select" id="log-dropdown" name="log"></select>
+    <div class="input-group-append">
+        <button style="margin: 0 !important" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" type="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Settings</button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" id="type-violations" href="#">Violations</a>
+            <a class="dropdown-item" id="type-people" href="#">People</a>
+         
+        </div>
+        <button style="margin: 0 !important" class="btn btn-outline-secondary" id="refresh-button" type="button"><i
+                class="fa fa-refresh" id="refresh"></i></button>
+    </div>
+</div>
+
 <div style="width: 50vw;"><canvas id="canvas"></canvas></div>
 
-<p>Set time interval:</p>
+<p>Aggregate data with sum per time interval:</p>
 <div class="row" style="width: 50vw;">
     <div class="col-sm-4">
         <button class="btn btn-primary btn-block toggle-unit btn-sm" onclick="toggle_unit('second')"
-            value="second">second</button>
+            value="second">Second</button>
     </div>
     <div class="col-sm-4">
         <button class="btn btn-primary btn-block toggle-unit btn-sm" onclick="toggle_unit('minute')"
             value="minute">minute</button>
+    </div>
+    <div class="col-sm-4">
+        <button class="btn btn-primary btn-block toggle-unit btn-sm" onclick="toggle_unit('ten-minutes')"
+            value="minute">ten minutes</button>
     </div>
     <div class="col-sm-4">
         <button class="btn btn-primary btn-block toggle-unit btn-sm" onclick="toggle_unit('hour')"
@@ -22,8 +42,12 @@
     </div>
 </div>
 
+
+<img id="bg" src="{{ url_for('video_feed') }}" hidden>
+
 {% endblock %}
 
 {% block scripts %}
-  <script src="static/js/log-graph.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"></script>
+<script src="static/js/log-graph.js"></script>
 {% endblock scripts %}
