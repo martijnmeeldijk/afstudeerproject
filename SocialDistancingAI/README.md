@@ -9,7 +9,7 @@ Je kan best een [virtual environment](https://towardsdatascience.com/setting-up-
 
 ## Clone de repo
 ```
-git clone https://github.com/aqeelanwar/SocialDistancingAI.git
+git clone https://github.com/martijnmeeldijk/afstudeerproject.git
 ```
 
 ## Install required packages

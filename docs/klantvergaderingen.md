@@ -100,6 +100,8 @@ De lectoren/begeleiders waren over het algemeen zeer tevreden over de vooruitgan
 
 Final touches aan de webapp doen, trainen van het model.
 
+Grafiek minder bol maken.
+
 
 ##  Maandag 1 Maart
 
@@ -109,7 +111,7 @@ Final touches aan de webapp doen, trainen van het model.
 
 | DATUM: | AANWEZIGEN:                                                  | **VERONTSCHULDIGD:** | VERSLAGGEVER: | DATUM VOLGENDE VERGADERING: | AGENDA:                  |
 | ------ | ------------------------------------------------------------ | -------------------- | ------------- | --------------------------- | ------------------------ |
-| 24/02  | Johan Strypsteen, Siegmund Leducq, David Vandenbroeck, Patrick De Mazière, Tim Vanherwegen, Robbe De Bie, Martijn Meeldijk, Louis Van de Perre,  | n/a                  | Robbe De Bie  | 01/03                       | Updaten over vooruitgang |
+| 01/03  | Johan Strypsteen, Siegmund Leducq, David Vandenbroeck, Patrick De Mazière, Tim Vanherwegen, Robbe De Bie, Martijn Meeldijk, Louis Van de Perre, | n/a                  | Robbe De Bie  | 01/03                       | Updaten over vooruitgang |
 
 
 
@@ -123,10 +125,14 @@ De lectoren/begeleiders waren weer over het algemeen tevreden over het resultaat
 **ACTIES**:
 
 UI aanpassen zodat de hoeveelheid mensen in beeld worden getoond + of er een violation van de 1.5m is op het moment. Documentatie uitschrijven voor het opzetten en gebruik van alle delen van het project.
-  
 
- 
+Logs event based maken ipv time based.
 
- 
+Mail kunnen sturen wanneer het aantal violations een bepaalde threshhold bereikt.
 
- 
+
+
+
+
+
+

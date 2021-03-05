@@ -12,11 +12,19 @@
 
 In these strange times where a pandemic runs rampant, hospitals need a way to make sure people follow the rules inside their buildings. This could of course be done by an employee but most of them have a bit more important stuff to do right now and some hospitals just don’t have the manpower. Most people try to follow the rules but sometimes you forget, get distracted, etc.. This is bad because of an increased chance of infection and that is obviously not what we want, especially in a hospital.
 
+
+
 ## **1.2.**	**Business Opportunity**
+
+
 
 In the current times with COVID, many businesses and other places with a lot of people flow, such as hospitals, could use a system that ensures every individual keeps his distance. The fact that a hospital has requested this system, proves that there is in fact a need for something like this. Not only will this system make sure that everyone keeps the appropriate distance at all times, it could also provide the business with useful data, such as the particular areas where the social distance is broken the most, and just how many violations there are each hour etc. This way they might be able to make changes to the layout of the room to try and decrease the number of violations.
 
+
+
 ## **1.3.**	**Business Improvement Objectives**
+
+
 
 BO-1: Automated way to warn people if they are too close to each other.	
 
@@ -31,6 +39,8 @@ BO-5: A simple to use UI to see the statistics
 
 
 ## **1.4.**	**Success Metrics**
+
+
 
 SM-1: The system marks most cases correctly and shows when social distancing is respected
 
@@ -64,6 +74,8 @@ RI-2: The Jetson is not powerful enough for prolonged use, this can be solved by
 
 ## **2.1.**	**Major Features**
 
+
+
 FE-1: Generate logs with the amount of violation at what time.
 
 FE-2: A web interface with graphs, generated using the log files made by the device.
@@ -75,7 +87,9 @@ FE-4: After initial configuration, the application can be ran entirely headless,
 FE-4: Live counter, updated every second. With the amount of people and the violations on them.
 
 FE-5: Live video feed.
- 
+
+
+
 
 ## **2.2.**	**Stakeholders profiles**
 
@@ -98,15 +112,14 @@ FE-5: Live video feed.
 
  
 
-**Patient**
+**Person**
 
-A patient is someone who stays at the hospital and might be walking around to stretch his/her legs who definitely has to stay away from any possible virus infections.
+A person is someone who passes the camera and is detected bij the object detection model
 
 
+**Violation**
 
-**Hospital Staff**
-
-The hospital staff will not have to constantly check if people are following the rules because the AI will do that for them
+A violation is when the software detects that 2 persons are closer to each other than 1.5 meters.
 
  
 
@@ -114,11 +127,11 @@ The hospital staff will not have to constantly check if people are following the
 
 
 
-OE-1: The COS shall operate correctly with the following web browsers: Windows Internet Explorer versions 7, 8, and 9; Firefox versions 12 through 26; Google Chrome (all versions); and Apple Safari versions 4.0 through 8.0.
+OE-1: The te DOM (Dicht-O-Meter) shall operate correctly with the following web browsers: Windows Internet Explorer versions 7, 8, and 9; Firefox versions 12 through 26; Google Chrome (all versions); and Apple Safari versions 4.0 through 8.0.
 
-OE-2: The COS shall operate on a server running the current corporate-approved versions of Red Hat Linux and Apache HTTP Server.
+OE-2: The te DOM shall operate on an NVIDIA Jetson which runs the AI and a local webserver for the interface
 
-OE-3: The COS shall permit user access from the corporate Intranet, from a VPN Internet connection, and by Android, iOS, and Windows smartphones and tablets.
+OE-3: The te DOM will ony be used locally and no connection is possible outside the local network.
 
 
 
@@ -129,6 +142,10 @@ OE-3: The COS shall permit user access from the corporate Intranet, from a VPN I
 CO-1: The system shall use the current corporate standard Jetson SDK for the Xavier model.
 
 CO-2: All python code shall conform to the python 3.0 standard.
+
+CO-3: Tensorflow 1 will be used alongside keras for the usage of the pre trained AI model
+
+CO-4: Flask is used for the making of the web interface
 
 
 
@@ -142,40 +159,31 @@ CO-2: All python code shall conform to the python 3.0 standard.
 
 
 
-## **4.1 User Interfaces (Tim)**
+## **4.1 User Interfaces**
 
-A user interface is provided in the form of a webapp. Several kinds of important data will be shown such as the amount of violations and timestamps. A livestream may be part of this.
+A user interface is provided in the form of a webapp. On the dashboard the logged violations will be plotted onto a graph.
+There is also a live video feed where you can see the video which the software is processing now. 
+
+There's also a settings page on which you can change the configuration file. So that you can change some configurations without needing direct access to the jetson (the jetson needs to be running for you to change the configurations)
 
 ## **4.2** Software Interfaces
 
 
 
-SI-1:  Cafeteria Inventory System
+SI-1: Web interface
 
-SI-1.1: The COS shall transmit the quantities of food items ordered to the Cafeteria Inventory System through a programmatic interface.
-
-SI-1.2: The COS shall poll the Cafeteria Inventory System to determine whether a requested food item is available.
-
-SI-1.3: When the Cafeteria Inventory System notifies the COS that a specific food item is no longer available, the COS shall remove that food item from the menu for the current date.
-
-SI-2:  Payroll System
-
-The COS shall communicate with the Payroll System through a programmatic interface for the following operations:
-
- 
-
-SI-2.1: To allow a Patron to register and unregister for payroll deduction.
-
-SI-2.2: To inquire whether a Patron is registered for payroll deduction.
-
-SI-2.3: To inquire whether a Patron is eligible to register for payroll deduction.
-
-SI-2.4: To submit a payment request for a purchased meal.
-
-SI-2.5: To reverse all or part of a previous charge because a patron rejected a meal or wasn’t satisfied with it, or because the meal was not delivered per the confirmed delivery instructions.
+SI-1.2: a settings tab is provided to change multiple configurations such as which camera stream to use.
 
 .
 
-## **4.3 Communications Interfaces (Louis)**
+## **4.3 Communications Interfaces**
 
-CI-1: When the alert is triggered a lamp will be lit up. 
+CI-1: When a violation is detected the live counter will show the detect-o-meter as red 
+
+CI-2: When a violation is detected the live counter will add 1 violation to the total violations
+
+CI-3: When a violation is detected it will be logged and shown in the graph shown on the dashboard
+
+CI-4: When a violation is detected this will be shown in the live video feed
+
+CI-5: When a person is detected a purple box will show what the AI recognizes as a person
