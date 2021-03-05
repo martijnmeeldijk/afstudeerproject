@@ -156,17 +156,7 @@ there is also a live video feed where you can see the video which the software i
 
 SI-1: Web interface
 
-SI-1.2: When a violation is detected the live counter will show the detect-o-meter as red 
-
-SI-1.3: When a violation is detected the live counter will add 1 violation to the total violations
-
-SI-1.4: When a violation is detected it will be logged and shown in the graph shown on the dashboard
-
-SI-1.5: When a violation is detected this will be shown in the live video feed
-
-SI-1.6:when a person is detected a box will show where the ai sees a person
-
- 
+SI-1.2: a settings tab is provided to change multiple configurations such as which camera stream to use.
 
 .
 
