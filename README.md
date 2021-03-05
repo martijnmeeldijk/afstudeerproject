@@ -16,6 +16,7 @@ Zie de volgende links voor meer info over de voortgang van ons project.
 * [Setup voor het project](https://github.com/martijnmeeldijk/afstudeerproject/blob/master/docs/Setup.md)
 * [Tensorflow 1 vs Tensorflow 2](https://github.com/martijnmeeldijk/afstudeerproject/blob/master/docs/Tensorflow1_vs_Tensorflow2_Rapport.md)
 * [Tips voor inputlag te reduceren bij het gebruik van een camera](https://github.com/martijnmeeldijk/afstudeerproject/blob/master/docs/CameraZonderLag.md)
+* [Gebruikershandleiding](https://github.com/martijnmeeldijk/afstudeerproject/blob/master/docs/handleiding.md)
 
 ### Tag
 
