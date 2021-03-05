@@ -56,7 +56,3 @@ class Mailer:
             server.sendmail(
                 sender_email, self.receiver_email, message.as_string()
             ) 
-
-            
-mailer = Mailer()
-mailer.send()

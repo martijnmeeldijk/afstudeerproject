@@ -10,5 +10,7 @@
 "te runnen)
 
 ## Veranderen van email adres en custom message voor het sturen van violation mail
-- Begin in de root
-
+- mailer.py heeft de klasse Mailer met functie send() deze oproepen zal een mail sturen
+- in de configs (settings) kan je veranderen naar wie de mail gestuurd wordt
+- je kan ook een custom message maken in html of plain text in de settings
+- de threshold setting is er om te weten wanneer hij een mail moet sturen bv 50 violations/minuut -> stuur een mail
